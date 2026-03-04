@@ -1,80 +1,731 @@
-￼
-	•	Tours
-	•	Experiencias
-	•	Agencias
-	•	Nosotros
-	•	Contactanos
-ES
-EN
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argentina Incoming | Tours y Experiencias</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #006189;
+  --blue-dark: #004a6a;
+  --blue-light: #e8f4f8;
+  --orange: #F19F00;
+  --orange-hover: #d98e00;
+  --dark: #1F2326;
+  --dark2: #25262a;
+  --cream: #f5f5f5;
+  --white: #ffffff;
+  --text: #4C5359;
+  --text-light: #8a8f96;
+  --radius: 12px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family:'Archivo',sans-serif; color:var(--text); background:var(--white); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
 
+/* NAV */
+.nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:0.8rem 2rem; display:flex; justify-content:space-between; align-items:center; transition:all 0.4s; }
+.nav.scrolled { background:var(--dark); box-shadow:0 4px 30px rgba(0,0,0,0.15); }
+.nav-logo { height:50px; filter:brightness(10); transition:all 0.3s; }
+.nav.scrolled .nav-logo { height:40px; }
+.nav-right { display:flex; align-items:center; gap:1.5rem; }
+.nav-links { display:flex; gap:1.8rem; list-style:none; align-items:center; }
+.nav-links a { color:rgba(255,255,255,0.9); text-decoration:none; font-weight:500; font-size:0.9rem; letter-spacing:0.03em; transition:color 0.3s; }
+.nav-links a:hover { color:var(--orange); }
+.nav-cta { background:var(--orange); color:var(--dark)!important; padding:0.55rem 1.3rem; border-radius:6px; font-weight:700; font-size:0.85rem; transition:all 0.3s; }
+.nav-cta:hover { background:var(--orange-hover); transform:translateY(-1px); }
 
+/* LANGUAGE TOGGLE */
+.lang-toggle { display:flex; background:rgba(255,255,255,0.12); border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.2); }
+.lang-btn { padding:0.3rem 0.7rem; font-family:'Archivo',sans-serif; font-size:0.75rem; font-weight:700; border:none; cursor:pointer; transition:all 0.3s; background:transparent; color:rgba(255,255,255,0.7); letter-spacing:0.05em; }
+.lang-btn.active { background:var(--orange); color:var(--dark); }
+.nav.scrolled .lang-toggle { border-color:rgba(255,255,255,0.15); }
 
+.hamburger { display:none; background:none; border:none; cursor:pointer; padding:0.5rem; }
+.hamburger span { display:block; width:24px; height:2px; background:white; margin:5px 0; }
 
+/* HERO */
+.hero { position:relative; height:100vh; min-height:600px; display:flex; align-items:flex-end; overflow:hidden; }
+.hero-slider { position:absolute; inset:0; }
+.hero-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.5s ease; }
+.hero-slide.active { opacity:1; }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(31,35,38,0.85) 0%, rgba(31,35,38,0.2) 50%, rgba(31,35,38,0.4) 100%); }
+.hero-content { position:relative; z-index:2; padding:0 3rem 5rem; max-width:850px; animation:fadeUp 1s ease-out 0.3s both; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+.hero-label { font-size:0.8rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
+.hero-label::before { content:''; width:30px; height:2px; background:var(--orange); }
+.hero h1 { font-family:'Archivo Black',sans-serif; font-size:clamp(2.5rem,5.5vw,4.2rem); color:var(--white); line-height:1.1; margin-bottom:1rem; letter-spacing:-0.02em; }
+.hero p { font-size:1.15rem; color:rgba(255,255,255,0.75); font-weight:300; max-width:550px; line-height:1.65; margin-bottom:2rem; }
+.hero-buttons { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-primary { display:inline-flex; align-items:center; gap:0.5rem; background:var(--orange); color:var(--dark); padding:0.9rem 2rem; border-radius:6px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.3s; border:none; cursor:pointer; font-family:'Archivo',sans-serif; }
+.btn-primary:hover { background:var(--orange-hover); transform:translateY(-2px); box-shadow:0 6px 20px rgba(241,159,0,0.35); }
+.btn-secondary { display:inline-flex; align-items:center; gap:0.5rem; background:transparent; color:var(--white); padding:0.9rem 2rem; border-radius:6px; font-weight:600; font-size:1rem; text-decoration:none; border:2px solid rgba(255,255,255,0.35); transition:all 0.3s; cursor:pointer; font-family:'Archivo',sans-serif; }
+.btn-secondary:hover { border-color:var(--white); background:rgba(255,255,255,0.08); }
 
-ARGENTINA INCOMING DMC
-Tours y Experiencias para descubrir Argentina
-Desde las Cataratas del Iguazú hasta el Fin del Mundo. Paquetes con vuelos, hoteles 4★ y excursiones diseñados por expertos locales.
-Ver tours y precios ↓ Hablar por WhatsApp
-🏆
-Operando desde 2013
-🌎
-Expertos en Argentina
-🏨
-Hoteles 4 estrellas
-✈️
-Vuelos internos incluidos
-🤝
-Atención personalizada
-NUESTROS TOURS
-Elegí tu aventura por Argentina
-Paquetes todo incluido con precios actualizados. Desde escapadas clásicas hasta el viaje completo por el país.
+/* TRUST BAR */
+.trust-bar { background:var(--white); border-bottom:1px solid #eee; padding:1.5rem 2rem; }
+.trust-bar-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:0.6rem; font-size:0.85rem; color:var(--text); font-weight:500; }
+.trust-item span { font-size:1.2rem; }
 
-SOBRE NOSOTROS
-Viajes que transforman
-Argentina Incoming es un DMC independiente con base en Buenos Aires, dedicado a pasajeros que desean vivir nuestro país de manera auténtica. Nuestro foco: atención personalizada y planificación experta para que tu viaje supere todas tus expectativas.
-Seleccionamos cuidadosamente a nuestros proveedores y nos destacamos por la reputación que hemos construido con agencias y viajeros de todo el mundo.
-10+
-AÑOS DE EXPERIENCIA
-8
-DESTINOS ARGENTINOS
-24-48hs
-RESPUESTA GARANTIZADA
-EXPERIENCIAS
-Sumá experiencias a tu viaje
-Actividades opcionales para complementar tu tour o armar un itinerario a medida.
-PARA AGENCIAS Y TOUR OPERATORS
-Tu socio DMC de confianza en Argentina
-Trabajamos con agencias y tour operators de Europa, USA y Latinoamérica ofreciendo servicios B2B con tarifas netas, comisiones competitivas y soporte operativo 24/7 durante los tours.
-	•	Tours grupales a medida desde 10 hasta 50+ pasajeros Tarifas netas confidenciales y estructura de comisiones flexible Guías bilingües (español, inglés, portugués, alemán, francés) Cotizaciones en menos de 48 horas con itinerario detallado Operación propia en todos los destinos: Buenos Aires, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia y Puerto Madryn
-🎓 Reservar Webinar de Formación Solicitar tarifas B2B
-🎓
-Webinar: Vendé Argentina con confianza
-Sesión de formación gratuita de 60 minutos donde te presentamos nuestros destinos, productos y herramientas para que puedas ofrecer Argentina a tus clientes con conocimiento experto.
-🗓
-60 minutos online
-🆓
-Totalmente gratuito
-🗺
-8 destinos cubiertos
-📋
-Material incluido
-Reservar mi lugar →
-CONTACTO
-¿Listo para tu viaje por Argentina?
-Escribinos y nuestro equipo te arma una propuesta personalizada en menos de 48 horas. Sin compromiso.
-📱
-WhatsApp
-+54 9 11 2465-0602
-✉️
-Email
-[email protected]
-📞
-Teléfono
-+54 11 5365-7800
-Pedí tu cotización
+/* SECTIONS */
+section { padding:5rem 2rem; max-width:1280px; margin:0 auto; }
+.section-label { font-size:0.75rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue); margin-bottom:0.5rem; }
+.section-title { font-family:'Archivo Black',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--dark); margin-bottom:0.5rem; letter-spacing:-0.01em; }
+.section-subtitle { color:var(--text-light); font-size:1.05rem; font-weight:300; margin-bottom:3rem; max-width:550px; line-height:1.6; }
 
+/* TOUR CARDS */
+.tours-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:1.5rem; }
+.tour-card { position:relative; border-radius:var(--radius); overflow:hidden; cursor:pointer; aspect-ratio:4/3; transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+.tour-card:hover { transform:scale(1.02); }
+.tour-card-bg { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.6s ease; }
+.tour-card:hover .tour-card-bg { transform:scale(1.08); }
+.tour-card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(31,35,38,0.9) 0%,rgba(31,35,38,0.15) 55%); transition:background 0.3s; }
+.tour-card:hover .tour-card-overlay { background:linear-gradient(to top,rgba(31,35,38,0.95) 0%,rgba(31,35,38,0.3) 55%); }
+.tour-card-content { position:absolute; bottom:0; left:0; right:0; padding:1.5rem; z-index:2; }
+.tour-card-badge { display:inline-block; background:var(--orange); color:var(--dark); font-weight:700; font-size:0.7rem; padding:0.3rem 0.7rem; border-radius:4px; margin-bottom:0.6rem; letter-spacing:0.05em; text-transform:uppercase; }
+.tour-card-name { font-family:'Archivo Black',sans-serif; font-size:1.5rem; color:var(--white); line-height:1.15; margin-bottom:0.3rem; }
+.tour-card-dest { color:rgba(255,255,255,0.65); font-size:0.85rem; font-weight:300; margin-bottom:0.8rem; }
+.tour-card-meta { display:flex; justify-content:space-between; align-items:flex-end; }
+.tour-card-days { color:rgba(255,255,255,0.7); font-size:0.8rem; font-weight:500; }
+.tour-card-from { font-size:0.7rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; }
+.tour-card-price { font-family:'Archivo Black',sans-serif; font-size:1.6rem; color:var(--orange); line-height:1; }
+.tour-card-pp { font-size:0.7rem; color:rgba(255,255,255,0.5); }
 
+/* ABOUT */
+.about-strip { background:var(--dark); padding:5rem 2rem; max-width:100%; }
+.about-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.about-img { border-radius:var(--radius); overflow:hidden; aspect-ratio:4/3; }
+.about-img img { width:100%; height:100%; object-fit:cover; }
+.about-text .section-label { color:var(--orange); }
+.about-text .section-title { color:var(--white); }
+.about-text p { color:rgba(255,255,255,0.7); font-weight:300; line-height:1.7; margin-bottom:1.5rem; }
+.about-stats { display:flex; gap:2.5rem; margin-top:2rem; }
+.about-stat strong { font-family:'Archivo Black',sans-serif; font-size:2rem; color:var(--orange); display:block; }
+.about-stat span { font-size:0.8rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; }
 
+/* AGENCIES */
+.agencies-section { background:var(--blue); padding:5rem 2rem; max-width:100%; position:relative; overflow:hidden; }
+.agencies-section::before { content:''; position:absolute; top:-50%; right:-10%; width:500px; height:500px; background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%); border-radius:50%; }
+.agencies-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:4rem; align-items:center; position:relative; z-index:1; }
+.agencies-text .section-label { color:rgba(255,255,255,0.6); }
+.agencies-text .section-title { color:var(--white); font-size:clamp(1.8rem,3vw,2.4rem); }
+.agencies-text p { color:rgba(255,255,255,0.8); font-weight:300; line-height:1.7; margin-bottom:1.2rem; }
+.agencies-features { list-style:none; margin:1.5rem 0 2rem; }
+.agencies-features li { display:flex; align-items:flex-start; gap:0.8rem; color:rgba(255,255,255,0.9); font-size:0.95rem; margin-bottom:0.8rem; line-height:1.5; }
+.agencies-features li::before { content:'✓'; flex-shrink:0; width:24px; height:24px; background:var(--orange); color:var(--dark); font-weight:800; font-size:0.75rem; display:flex; align-items:center; justify-content:center; border-radius:50%; margin-top:0.1rem; }
+.agencies-buttons { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-webinar { display:inline-flex; align-items:center; gap:0.6rem; background:var(--orange); color:var(--dark); padding:0.9rem 2rem; border-radius:6px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.3s; font-family:'Archivo',sans-serif; }
+.btn-webinar:hover { background:var(--orange-hover); transform:translateY(-2px); box-shadow:0 6px 20px rgba(241,159,0,0.35); }
+.btn-agencies-secondary { display:inline-flex; align-items:center; gap:0.5rem; background:transparent; color:var(--white); padding:0.9rem 2rem; border-radius:6px; font-weight:600; font-size:1rem; text-decoration:none; border:2px solid rgba(255,255,255,0.3); transition:all 0.3s; font-family:'Archivo',sans-serif; }
+.btn-agencies-secondary:hover { border-color:var(--white); background:rgba(255,255,255,0.08); }
+.agencies-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius); padding:2rem; text-align:center; }
+.agencies-card-icon { font-size:3rem; margin-bottom:1rem; }
+.agencies-card h3 { font-family:'Archivo Black',sans-serif; color:white; font-size:1.3rem; margin-bottom:0.5rem; }
+.agencies-card p { color:rgba(255,255,255,0.7); font-size:0.9rem; font-weight:300; line-height:1.6; margin-bottom:1.5rem; }
+.webinar-highlights { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.5rem; text-align:left; }
+.webinar-highlight { display:flex; align-items:center; gap:0.5rem; color:rgba(255,255,255,0.85); font-size:0.8rem; font-weight:500; }
+.webinar-highlight span { font-size:1rem; }
 
-Enviar consulta →
-Argentina Incoming DMC · Empresa de viajes y turismo (Leg Nro 15705) Av. Corrientes 6365 Of 606 · Ciudad Autónoma de Buenos Aires · Argentina
+/* EXPERIENCES */
+.exp-section { background:var(--cream); max-width:100%; padding:5rem 2rem; }
+.exp-inner { max-width:1280px; margin:0 auto; }
+.dest-filter { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+.dest-filter button { background:var(--white); border:1px solid #ddd; padding:0.5rem 1rem; border-radius:6px; font-family:'Archivo',sans-serif; font-weight:500; font-size:0.85rem; cursor:pointer; transition:all 0.2s; color:var(--text); }
+.dest-filter button:hover,.dest-filter button.active { background:var(--blue); border-color:var(--blue); color:var(--white); }
+.exp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
+.exp-card { background:var(--white); border-radius:10px; overflow:hidden; transition:all 0.3s; border:1px solid #eee; }
+.exp-card:hover { transform:translateY(-3px); box-shadow:0 8px 30px rgba(0,0,0,0.08); }
+.exp-card-img { height:150px; background-size:cover; background-position:center; position:relative; }
+.exp-card-dest { position:absolute; bottom:0.6rem; left:0.6rem; background:var(--blue); color:white; font-size:0.7rem; font-weight:600; padding:0.25rem 0.6rem; border-radius:4px; }
+.exp-card-body { padding:1rem 1.2rem; }
+.exp-card-name { font-weight:700; font-size:0.95rem; color:var(--dark); margin-bottom:0.6rem; line-height:1.3; }
+.exp-card-footer { display:flex; justify-content:space-between; align-items:center; }
+.exp-card-price { font-family:'Archivo Black',sans-serif; font-size:1.2rem; color:var(--blue); }
+.exp-card-price small { font-family:'Archivo',sans-serif; font-weight:300; font-size:0.7rem; color:var(--text-light); display:block; }
+.exp-card-btn { background:transparent; border:1.5px solid var(--blue); color:var(--blue); padding:0.4rem 0.9rem; border-radius:5px; font-family:'Archivo',sans-serif; font-weight:600; font-size:0.75rem; cursor:pointer; transition:all 0.2s; text-decoration:none; }
+.exp-card-btn:hover { background:var(--blue); color:white; }
+
+/* MODAL */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px); z-index:200; align-items:center; justify-content:center; padding:1.5rem; }
+.modal-overlay.active { display:flex; }
+.modal { background:var(--white); border-radius:var(--radius); max-width:680px; width:100%; max-height:88vh; overflow-y:auto; position:relative; animation:modalIn 0.3s ease-out; }
+@keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.modal-header { background:var(--dark); padding:2rem 2rem 1.5rem; position:relative; }
+.modal-close { position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,0.1); border:none; width:32px; height:32px; border-radius:50%; color:white; font-size:1rem; cursor:pointer; }
+.modal-close:hover { background:rgba(255,255,255,0.2); }
+.modal-header h2 { font-family:'Archivo Black',sans-serif; color:var(--white); font-size:1.6rem; margin-bottom:0.3rem; }
+.modal-header p { color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:300; }
+.modal-body { padding:1.5rem 2rem 2rem; }
+.modal-section-title { font-weight:700; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin:1.5rem 0 0.6rem; padding-bottom:0.4rem; border-bottom:2px solid var(--blue-light); }
+.modal-section-title:first-child { margin-top:0; }
+.modal-item { display:flex; justify-content:space-between; align-items:center; padding:0.55rem 0; font-size:0.9rem; border-bottom:1px solid #f0f0f0; }
+.modal-item-price { font-weight:700; color:var(--dark); white-space:nowrap; }
+.modal-total { display:flex; justify-content:space-between; align-items:center; margin-top:1.5rem; padding:1.2rem 1.5rem; background:var(--dark); border-radius:8px; color:white; }
+.modal-total span { font-weight:500; }
+.modal-total strong { font-family:'Archivo Black',sans-serif; font-size:1.8rem; color:var(--orange); }
+.modal-cta { display:block; width:100%; margin-top:1.2rem; padding:0.9rem; background:var(--orange); color:var(--dark); border:none; border-radius:6px; font-family:'Archivo',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s; text-align:center; text-decoration:none; }
+.modal-cta:hover { background:var(--orange-hover); }
+
+/* CONTACT */
+.contact-section { background:var(--dark); padding:5rem 2rem; max-width:100%; }
+.contact-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+.contact-left .section-label { color:var(--orange); }
+.contact-left .section-title { color:white; font-size:2.2rem; }
+.contact-left p { color:rgba(255,255,255,0.6); font-weight:300; line-height:1.7; margin-bottom:2rem; }
+.contact-links { display:flex; flex-direction:column; gap:1.2rem; }
+.contact-link { display:flex; align-items:center; gap:1rem; color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.95rem; transition:all 0.2s; }
+.contact-link:hover { color:var(--orange); }
+.contact-icon-box { width:44px; height:44px; background:rgba(255,255,255,0.08); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+.contact-form-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius); padding:2rem; }
+.contact-form-box h3 { font-family:'Archivo Black',sans-serif; color:white; font-size:1.2rem; margin-bottom:1.5rem; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem; }
+.form-input { width:100%; padding:0.75rem 1rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:white; font-family:'Archivo',sans-serif; font-size:0.9rem; outline:none; transition:all 0.2s; }
+.form-input:focus { border-color:var(--orange); background:rgba(255,255,255,0.12); }
+.form-input::placeholder { color:rgba(255,255,255,0.35); }
+textarea.form-input { resize:vertical; min-height:100px; }
+.form-submit { width:100%; padding:0.9rem; background:var(--orange); color:var(--dark); border:none; border-radius:6px; font-family:'Archivo',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s; margin-top:0.5rem; }
+.form-submit:hover { background:var(--orange-hover); }
+
+footer { background:#191b1e; color:rgba(255,255,255,0.4); text-align:center; padding:2rem; font-size:0.8rem; border-top:1px solid rgba(255,255,255,0.06); }
+.loading { text-align:center; padding:5rem 2rem; color:var(--text-light); }
+.loading-spinner { width:36px; height:36px; border:3px solid #ddd; border-top-color:var(--blue); border-radius:50%; animation:spin 0.7s linear infinite; margin:0 auto 1rem; }
+@keyframes spin { to{transform:rotate(360deg)} }
+
+@media(max-width:900px) { .about-inner,.contact-inner,.agencies-inner{grid-template-columns:1fr;gap:2rem} .about-img{display:none} }
+@media(max-width:768px) { .nav-links{display:none} .hamburger{display:block} .hero-content{padding:0 1.5rem 3.5rem} section{padding:3rem 1.2rem} .tours-grid{grid-template-columns:1fr} .exp-grid{grid-template-columns:1fr 1fr} .form-row{grid-template-columns:1fr} .tour-card{aspect-ratio:3/2} .webinar-highlights{grid-template-columns:1fr} }
+@media(max-width:480px) { .exp-grid{grid-template-columns:1fr} .trust-bar-inner{gap:1.5rem} .agencies-buttons{flex-direction:column} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEASABIAAD/7QAsUGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAASAAAAAEAAQBIAAAAAQAB/+EuXmh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8APD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDQgNzkuMTY0NTcwLCAyMDIwLzExLzE4LTE1OjUxOjQ2ICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgICAgICAgICAgeG1sbnM6eG1wR0ltZz0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL2cvaW1nLyIKICAgICAgICAgICAgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iCiAgICAgICAgICAgIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIgogICAgICAgICAgICB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgICAgICAgICB4bWxuczppbGx1c3RyYXRvcj0iaHR0cDovL25zLmFkb2JlLmNvbS9pbGx1c3RyYXRvci8xLjAvIgogICAgICAgICAgICB4bWxuczpwZGY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGRmLzEuMy8iPgogICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL2pwZWc8L2RjOmZvcm1hdD4KICAgICAgICAgPGRjOnRpdGxlPgogICAgICAgICAgICA8cmRmOkFsdD4KICAgICAgICAgICAgICAgPHJkZjpsaSB4bWw6bGFuZz0ieC1kZWZhdWx0Ij5sb2dvVFJFU09SPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOkFsdD4KICAgICAgICAgPC9kYzp0aXRsZT4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBJbGx1c3RyYXRvciAyNS4yIChNYWNpbnRvc2gpPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgICAgIDx4bXA6Q3JlYXRlRGF0ZT4yMDIyLTA0LTA1VDE1OjQ1OjE4LTAzOjAwPC94bXA6Q3JlYXRlRGF0ZT4KICAgICAgICAgPHhtcDpNb2RpZnlEYXRlPjIwMjItMDQtMDVUMTg6NDU6MjlaPC94bXA6TW9kaWZ5RGF0ZT4KICAgICAgICAgPHhtcDpNZXRhZGF0YURhdGU+MjAyMi0wNC0wNVQxNTo0NToxOC0wMzowMDwveG1wOk1ldGFkYXRhRGF0ZT4KICAgICAgICAgPHhtcDpUaHVtYm5haWxzPgogICAgICAgICAgICA8cmRmOkFsdD4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDx4bXBHSW1nOndpZHRoPjI1NjwveG1wR0ltZzp3aWR0aD4KICAgICAgICAgICAgICAgICAgPHhtcEdJbWc6aGVpZ2h0Pjc2PC94bXBHSW1nOmhlaWdodD4KICAgICAgICAgICAgICAgICAgPHhtcEdJbWc6Zm9ybWF0PkpQRUc8L3htcEdJbWc6Zm9ybWF0PgogICAgICAgICAgICAgICAgICA8eG1wR0ltZzppbWFnZT4vOWovNEFBUVNrWkpSZ0FCQWdFQVNBQklBQUQvN1FBc1VHaHZkRzl6YUc5d0lETXVNQUE0UWtsTkErMEFBQUFBQUJBQVNBQUFBQUVBJiN4QTtBUUJJQUFBQUFRQUIvKzRBRGtGa2IySmxBR1RBQUFBQUFmL2JBSVFBQmdRRUJBVUVCZ1VGQmdrR0JRWUpDd2dHQmdnTERBb0tDd29LJiN4QTtEQkFNREF3TURBd1FEQTRQRUE4T0RCTVRGQlFURXh3Ykd4c2NIeDhmSHg4Zkh4OGZId0VIQndjTkRBMFlFQkFZR2hVUkZSb2ZIeDhmJiN4QTtIeDhmSHg4Zkh4OGZIeDhmSHg4Zkh4OGZIeDhmSHg4Zkh4OGZIeDhmSHg4Zkh4OGZIeDhmSHg4Zkh4OGYvOEFBRVFnQVRBRUFBd0VSJiN4QTtBQUlSQVFNUkFmL0VBYUlBQUFBSEFRRUJBUUVBQUFBQUFBQUFBQVFGQXdJR0FRQUhDQWtLQ3dFQUFnSURBUUVCQVFFQUFBQUFBQUFBJiN4QTtBUUFDQXdRRkJnY0lDUW9MRUFBQ0FRTURBZ1FDQmdjREJBSUdBbk1CQWdNUkJBQUZJUkl4UVZFR0UyRWljWUVVTXBHaEJ4V3hRaVBCJiN4QTtVdEhoTXhaaThDUnlndkVsUXpSVGtxS3lZM1BDTlVRbms2T3pOaGRVWkhURDB1SUlKb01KQ2hnWmhKUkZScVMwVnROVktCcnk0L1BFJiN4QTsxT1QwWlhXRmxhVzF4ZFhsOVdaMmhwYW10c2JXNXZZM1IxZG5kNGVYcDdmSDErZjNPRWhZYUhpSW1LaTR5TmpvK0NrNVNWbHBlWW1aJiN4QTtxYm5KMmVuNUtqcEtXbXA2aXBxcXVzcmE2dm9SQUFJQ0FRSURCUVVFQlFZRUNBTURiUUVBQWhFREJDRVNNVUVGVVJOaElnWnhnWkV5JiN4QTtvYkh3Rk1IUjRTTkNGVkppY3ZFekpEUkRnaGFTVXlXaVk3TENCM1BTTmVKRWd4ZFVrd2dKQ2hnWkpqWkZHaWRrZEZVMzhxT3p3eWdwJiN4QTswK1B6aEpTa3RNVFU1UFJsZFlXVnBiWEYxZVgxUmxabWRvYVdwcmJHMXViMlIxZG5kNGVYcDdmSDErZjNPRWhZYUhpSW1LaTR5TmpvJiN4QTsrRGxKV1dsNWlabXB1Y25aNmZrcU9rcGFhbnFLbXFxNnl0cnErdi9hQUF3REFRQUNFUU1SQUQ4QTlVNHF3cnoxK2EzbC93QXF3VElxJiN4QTt2cVdwUmJOYVcrNnhzZW5yeWdGWXZrZmk5c3ljT21sUHlEaDZuV3d4RHZQNDV2R1Yvd0NjZ3Z6RGE4ZTVQMVdPeGtiaUlqYmxvNHdmJiN4QTtCZ2VaSUcrN0g1WnNQeU9PcTZ1by9sUExkN1Y3bnIzNWNTd2F0b2RqNXJsaGpzRkVNZ2VnckxLeVZqbG11TGgvamtWakhWUWZtYTdVJiN4QTt3TS9wa1ljM2E2UWlVUms1ZmpxVTIwbjh5ZkoycGFPTlhHb0paMlJtZTNEWHBXQStvaWVwU2puOXFPanI0aks1YWVZTlZ1MncxZU9VJiN4QTtlSzZIbXJ2K1lIa3BKN2lBNjFhODdWR2t1aUpBeXhCR1ZEemNWVlR6Y0tBVFVucGc4Q2ZjeS9NNDdJNGhzcS80NDhuVnR4K203S3QxJiN4QTt3K3JEMTQ2eWVveFZlTys5V1FqNWpCNE0rNHAvTVk5dlVOL05BMnY1bGVVcnd4dmEzOE1sb1h1STU3cHBZNDFpTnQxTExJeXVWYnFwJiN4QTtVSGJjN1pNNmVZNWhoSFY0enlPMi93QmlMbDgvZVNZcmRibDljc2hidEsxdXN2cm9WTXFBRmxCQi9aREFuNWpJK0JQbFJaSFU0NnZpJiN4QTtDZXF5dW9kQ0dWZ0NyQTFCQjZFSEttOXZGWFlxN0ZYWXE3RlhZcTdGWFlxN0ZYWXE3RlhZcTdGWFlxN0ZYWXE3RlhZcTdGWFlxN0ZYJiN4QTtZcWhOWXNwcjdTYjJ5aG5hMW11b0pZWXJsS2hvMmtRcXJyU202azF5VURSQllaSThVU0J0YjU5OHNlZC9MbjVjSmNXbDFZYWxKNW9UJiN4QTtuYjZ0WmVzcTJNa3F5TVZtcXhaaXpJUlE4S1VQMzdYSmhsbDNCSEQwNzNSWWRSRFQyQ0pjZlVkRVQ1eDgzYWwrWWVtYVRvL2xxTTJtJiN4QTtuM0NjOVdzekhSSTVrZXFxSmVJNXFLY3Zob09sZDloSEZpR0VtVS9ndW8xSno4TU1mWG1QeDBlbitYL0p6ZjhBS3VUNVhOeEpiSkxDJiN4QTtiZDd1TUx5WkhvSkNvUDhBTUtydjg4d1pacnljZE8xeDZZakQ0WlBSajZlU3ZJR25hd3R3K28vVWJPeXZZWjEweTVtVzRSNXJLTjRRJiN4QTs0YVJwSEg5NnRWTzQ0OWhTbVI0bVNRMkYyT2Z2Y0QvQjRTOVV1RUNYSW0rVzM2V0xXM2toYi96RHI4ZXQzZGxwQ0VtNnQ1N2U1OVJyJiN4QTtSMXVQV1ZJVjVCVEUzUGs0S3FlZlNtWG5JUkdQQ0NmaHpjY0RHWnpFNVJqVy9QbHYrUGl5RzE4Zy9sOUhwSmhsOHdSdUx5Q0dGYmdlJiN4QTtsSHZEZk5kTXlCdVhFbG5DSGZaZHpsUnlaYitubCtwdmlOTncvd0I0Ti9kL090ZmYrVVBMRjlDYmFUekVadE9rbTFXU0tWRGJxdHViJiN4QTtzQjVWSnJ6azRzL0t2aDRZSXptTitIZjA5NnpsaGx0eGd4OWUrMjNmNythbjVoOGsvbDdmUlhOMS9pTTJ0cGQzRGw0b1NqUmtyYlJ4JiN4QTtPcXhxUGlZY0E0YW0zTDNyaHh6eWcxdzdvekhURUdYaUFBbjlEMVhUSVVnMDIwZ1JpeVJReG9yTXBWaUZVQUVxZHdmYk1DWE11NXgvJiN4QTtTUGNpY2l6ZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVllGNS84QXlrMFR6VmZKJiN4QTtxd0FoMVdOVlIyTlRITXFmWkRxQ1BpSFFONGJHb3pLd2FvNHhYTU91MXZaNHpiZzhNdStyVXZMdjVkRzNsaml1QTF2WldqS1pZbG9EJiN4QTtjT2hESlNSV3I2UXA4UW9LOU9nb1Jrems3bmNuN0YwMmpFUFNBUkVjeWVjajMzM1BRZ0FCUWRNeG5Zc1l1ZklPbXozRjdPMDh2SytTJiN4QTs1Ung4SkNtNktrbGR2MmVHMlpJMUpBQTdxK3gxYyt5b1NNalo5WEYvc3FRei9sdlptRzd0UmZ6clozVE5MNklXS3F6TXlQejU4ZVIrJiN4QTtLTWJaTDgyYkJyY05aN0hqVW84UjRaYjF0ejIzdXZKdUw4dDlPQzNSbnU1cDU3eU80VzRsWll4Vjdrb1RJRkMwQlgweGlkV2RxSEt2JiN4QTtzU094NGIzSWt5RXI1ZnhWdjlpcHFINWRhWGVUVFNtNGxqOVgxcUtvU2c5YUdPSTl2K0thL1RnanE1QWNrNWV5TWN5VFpGMzlvQS9RJiN4QTtsbm0zeU5xRjFjYzlKaGhkSjUydVovVWN4bFMwYVJHTDRBS3hQd3ErOVRsbURVZ0QxT05yK3pKeU40d056WjZkQUs5eDZzN2dEckRHJiN4QTtKQXF5QlFIQ1Y0ZzAzNDE3ZUdZUjV1OWpkQzErQms3RlhZcTdGWFlxN0ZYWXE3RlhZcTdGWFlxN0ZYWXE3RlhZcTdGWFlxN0ZVdDEvJiN4QTt6RHBtZzJEWHVvU0ZZNjhZNDFvWkhiK1ZGSkZUbG1MRktab09OcXRYREJEaW1mMm9uVHRSc3RTc29yMnlsRTF0TU9TT3Y2ajRFZHhrJiN4QTtad01UUjV0dUhOSEpFU2liaVVUa1d4Mkt1eFYyS3V4VjJLdXhWMkt1eFYyS3V4VjJLdXhWMkt1eFYyS3V4VjJLdXhWMkt1eFYyS3V4JiN4QTtWMkt1eFYyS3V4VjJLdXhWS3ZNbm1UVFBMK212Zlg3MFVmRERFUHR5UDJWUi9uVExNV0l6TkJ4dFhxNFlJY1V2N1hnUG1QelRxUG1IJiN4QTtVbXZiMXFLS3JCQXArQ0pQNVYvaWUrYjNEaEdNVUhndGJxNTZpZkZMNER1VEx5VDUydmZMZDczbTAyWWo2emJWK2ptbGVqRDhmMVExJiN4QTtHbkdRZWJkMmIybExUUzc0SG1QMGp6ZThhZHFObHFWbEZlMlVvbXRwaHlSMS9VZkFqdU0wYzRHSm84M3ZNT2FPU0lsRTNFb25JdGpzJiN4QTtWZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpcnNWZGlxVCthZk5XaytXdEtmJiN4QTtVTlJrb28rR0dGYWVwTEoyUkIvblRMTVdJek5CeDlUcVk0WWNVdjdYem41bDg0YW41bDFScjYrYWlpcTI5dXArQ0pQNVYvaWUrYjNEJiN4QTtoR01VSGlOYnFaNTU4VXZnTzVCUnlaYTRCQ3VqNHNDR1UrU2ZPMTc1YnZlODJtekVmV2JhdjBjMHIwWWZqK3JIMUduR1FlYnNlemUwJiN4QTtwYWFYZkE4eCtrZWIzalR0UnN0U3NvcjJ5bEUxdE1PU092Nmo0RWR4bWpuQXhOSG05NWh6UnlSRW9tNGxJNy84d2ZMOW5xbHZwemV2JiN4QTtLMXdXQzNVY0xmVlI2YXM4ditrTnhqUHBwR3hZS1NkaU91MldSd1NJdHJscW9DVmYyZk5XSG43eVdSVmRadFc3Y1ZrRE5XbGFCUnZXJiN4QTttK0R3Sjl5ZnpPUCtjRTAwelY5TDFTQnA5TnU0cnlGRzRQSkM0ZFEzRlg0a2p2eGRUVDN5RW9tUE5zaE9NaFlOb3ZJczB2MXJ6Rm9XJiN4QTtpUUpQcTkvQll4U053amFkd25KdkJRZHo3NU9HT1V1UXRyeVpZd0Z5TkxOSDh4YVpyRHpmbzkvWGhpNlhLRldpZjRtVThHVm0vYVE5JiN4QTtRSzlSVWI0enhtUE5jZVdNK1NaNUJzZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpcnNWUStvM1VscFlYJiN4QTtOMUZieVhja0VieUpiUlU5U1FxcElSS2tDcmRCaGlMTk1aR2dUVnZuUnRhdlBPbHhkYXJya2Z4Q1ZvTGEwcXdTM2lXaDRLTnFOWDdUJiN4QTtkVCtHYVgyZzdSemFYTkhIaGx3Z1JFajVuZm4zN2RPVHFkUGpHb0Jua0Y3MFBJT1h5L3BDOUlQK0hmOEE1cXpUZjZKZGYvcW4reGgvJiN4QTt4TFovSlduL0FKdjJuOWE4YUxwZzZRLzhNLzhBWEgvUkxyLzlVLzJNUCtKUi9KR20vbS9iTDlhb3VsMkttb2krOHNmMW5JWlBhTFhUJiN4QTtGSElmZ0lqN1FMV1BaT21CdmcrMC9yYi9BRWJaZjc3L0FPR2IrdVQvQU5FMnYvMVQvWXcvNGxqL0FDTnBmNW4yeS9XbnZsRHpIZjZEJiN4QTtyRnZaMk1MM1Z0ZXZ4bXNVSkpKTkFIanFkbUgzRWRmRWRIMkZxODJzamtsbWxmQncwYUE3NzVBZVRqWlpqUjVZUXhSc1R1NDJUM2JpJiN4QTsvd0FkNzA2MThqYUhiZVlKZGNRU3RjUzh6NkVqbDRVZVdnZDQwYXZFdFRvTnQvbFRhSE1USGhkeEhUUkV6TnllUnRFVGx3YTVVdWF5JiN4QTtFVHVDL3dBSVdqMFB4RGlBS0h0a3Z6RXZMNU5QOG53NzVmNllwbnBPa3dhWkRKRERMTktza25xVm5jeU12d0tuRU1kNlVUdjN5dWMrJiN4QTtKeU1HRVl3UUNUWjZtMFhLcnRFNnh0d2tLa0k5T1hFa2JHbmVtUURhWHp6cVY3cGNtb1hXaytZL0w5enJmbXl6amxFbXFYMGhXM1dZJiN4QTtyVkFFaWVGVGJFdHlYb1ZVOU0yMFFhNG9uaGgrUHRlZnlaSThYRE9KbGs4L3h5KzRNeDBueVplYWYrVituV2srcVNXUDFTNFcrK3NXJiN4QTs2MVoza2Y4QWNFMTNLSTdodVA3WEVDcTVqbkx4WlR0ejJjczR2RDA0czFSdmJ6NUtDeDNzZW9OTS9tMjlpczRiU0FvN2ZXSkpqSWx3JiN4QTtETVpJWCtFTEllbEhKcFFHcS9BWjhPMzBqbitoeC96VVFiNDVWWG5mUHUvSDZGQjlPZ0U5b0pQTkdwVFRRMGpNc3lYQmtKamlJZDRtJiN4QTtNeCtKbWxKOFFHQVVnQTFsUm8ra01EcVlXUFhMNUh1NmIrZjJzeDhoSmNEVXRUSjF5ODFlMk1WcDZjZDNFVVdHc1czRjJabVptV2hmJiN4QTtZZGp1ZDh4dFFLQTJBNXV3MFdZVGxLcFNrS2p6SGVHYVppdXhkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpcnNWJiN4QTtlVi9teitXRi9xTU11dWVWNVpiZlZGckplV0VMc2lYUGk2cXBBOVgvQUlsOCt0dUtHQ1V2M3NJUzh6RUUvYjBkZHJkTk1qaXhrZzl3JiN4QTtQUDhBYThDajF2VjFjcEpkM0N1cElaV2tjRUViRUVFNXN2NUwwdjhBcVdQL0FFa2YxUE9TMUdVZnhTK1pSME9zYWdldDFNZitlamYxJiN4QTt3L3lYcGY4QVVzZitraitwcGxxczM4K1h6S05pMU85UFc0a1AremIrdVA4QUplbC8xTEgvQUtTUDZtazZ2Ti9QbC9waW1XbVRhdGQzJiN4QTtrVnRabVNlNW1JU0tJZkdXSjlqK3ZNZlU5aTZPY2FsampFZVE0ZnRGTXNHdDFQR0JDVWpJOU9mM3Zldkkva21QUXJmNjFlTUxqV0psJiN4QTtwTk4xV05UL0FMcmo5dkU5ODE4Y2VMRkhneFI0WWZmNWs5WHI5SHBKUTllUThXVTllN3lES3NYUGRpcnNWZGlxRHZkRzBxK2tTUzd0JiN4QTtZNXBFcHhabDNvcHFBZkZhOWp0a2hNamsxenhSa2JJUmhBSW9SVVpGc2E5TkIreVB1eHRGQnIwb3Y1RjI2YkQ1WWJYaENqYjZkWVcwJiN4QTs4OXhiMjhjVTl5UWJpUkZBWnlvb09SSFdtRXpKRkU4bUVNTUlra0FBeTVvakl0anNWZGlyc1ZkaXJzVmRpcnNWZGlyc1ZkaXJzVmRpJiN4QTtyc1ZkaXJzVmRpcnNWZVIvbkIrVDY2eXN2bUh5OUVGMWhRWHZMTkJRWElIVmxIKy9mK0pmUHJuNlhWY1BwbHlkVHI5QngrdUgxZmYrJiN4QTsxOC94U3VqbEhCVjFKREtSUWdqWWdnNXQzbXB3VGpTb0x5L3ZJYkt6aWFlNm5ZSkRFZ3F6TWNFcEFDeTFERVpHZ0xKZlNQNWQvbDVhJiN4QTsrV0xNWEZ6eG4xbWRmMzh3M1dNSC9kY2Z0NG52bWsxT3BPUTBQcGVzN083TmpnRm5lWit6eURNOHhYYU94VjJLdXhWMkt1eFYyS3V4JiN4QTtWMkt1eFYyS3V4VjJLdXhWMkt1eFYyS3V4VjJLdXhWMkt1eFYyS3V4VjJLdXhWMkt1eFYyS3ZKUHpkL0ozOU9HVFh2THNTcHJQVzd0JiN4QTtBUWkzSS9uQk5BSmYrSmZQcm42WFY4UHBseWRWcit6L0FCUFZENnZ2WkIrVi93Q1dOcDVTc0JjM2ZHNDEyNFgvQUVpY2JyRUQvdXFLJiN4QTt2YitadS95eXJVNms1RFErbHQwT2hHRVdkNWxuZVlyc0hZcTdGWFlxN0ZYWXE3RlhZcTdGWFlxN0ZYWXE3RlhZcTdGWFlxN0ZYWXE3JiN4QTtGWFlxN0ZYWXE3RlhZcTdGWFlxN0ZYWXE3RlhZcTdGWFlxN0ZYWXEvLzlrPTwveG1wR0ltZzppbWFnZT4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOkFsdD4KICAgICAgICAgPC94bXA6VGh1bWJuYWlscz4KICAgICAgICAgPHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD51dWlkOjlFM0U1QzlBOEM4MURCMTE4NzM0REI1OEZEREU0QkE3PC94bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ+CiAgICAgICAgIDx4bXBNTTpEb2N1bWVudElEPnhtcC5kaWQ6YzBmMWE1MjgtM2IwNC00YTg0LTk0MTktNjE5MTI1M2FmZGYxPC94bXBNTTpEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06SW5zdGFuY2VJRD54bXAuaWlkOmMwZjFhNTI4LTNiMDQtNGE4NC05NDE5LTYxOTEyNTNhZmRmMTwveG1wTU06SW5zdGFuY2VJRD4KICAgICAgICAgPHhtcE1NOlJlbmRpdGlvbkNsYXNzPmRlZmF1bHQ8L3htcE1NOlJlbmRpdGlvbkNsYXNzPgogICAgICAgICA8eG1wTU06RGVyaXZlZEZyb20gcmRmOnBhcnNlVHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICA8c3RSZWY6aW5zdGFuY2VJRD54bXAuaWlkOjhiN2JkZTQzLTg1MDktNDZiOS05Mjk3LWMyZWNjNDZjMGFhNDwvc3RSZWY6aW5zdGFuY2VJRD4KICAgICAgICAgICAgPHN0UmVmOmRvY3VtZW50SUQ+eG1wLmRpZDo4YjdiZGU0My04NTA5LTQ2YjktOTI5Ny1jMmVjYzQ2YzBhYTQ8L3N0UmVmOmRvY3VtZW50SUQ+CiAgICAgICAgICAgIDxzdFJlZjpvcmlnaW5hbERvY3VtZW50SUQ+dXVpZDo5RTNFNUM5QThDODFEQjExODczNERCNThGRERFNEJBNzwvc3RSZWY6b3JpZ2luYWxEb2N1bWVudElEPgogICAgICAgICAgICA8c3RSZWY6cmVuZGl0aW9uQ2xhc3M+ZGVmYXVsdDwvc3RSZWY6cmVuZGl0aW9uQ2xhc3M+CiAgICAgICAgIDwveG1wTU06RGVyaXZlZEZyb20+CiAgICAgICAgIDx4bXBNTTpIaXN0b3J5PgogICAgICAgICAgICA8cmRmOlNlcT4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDphY3Rpb24+c2F2ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDo1OEE4NTZGMjE1MzRFNzExQjA2Q0I4MTFEQUU5NDg5RDwvc3RFdnQ6aW5zdGFuY2VJRD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OndoZW4+MjAxNy0wNS0wOFQxNToyNjo0NS0wMzowMDwvc3RFdnQ6d2hlbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OnNvZnR3YXJlQWdlbnQ+QWRvYmUgSWxsdXN0cmF0b3IgQ1M1PC9zdEV2dDpzb2Z0d2FyZUFnZW50PgogICAgICAgICAgICAgICAgICA8c3RFdnQ6Y2hhbmdlZD4vPC9zdEV2dDpjaGFuZ2VkPgogICAgICAgICAgICAgICA8L3JkZjpsaT4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDphY3Rpb24+c2F2ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDpjMGYxYTUyOC0zYjA0LTRhODQtOTQxOS02MTkxMjUzYWZkZjE8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMjItMDQtMDVUMTU6NDU6MTgtMDM6MDA8L3N0RXZ0OndoZW4+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIElsbHVzdHJhdG9yIDI1LjIgKE1hY2ludG9zaCk8L3N0RXZ0OnNvZnR3YXJlQWdlbnQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpjaGFuZ2VkPi88L3N0RXZ0OmNoYW5nZWQ+CiAgICAgICAgICAgICAgIDwvcmRmOmxpPgogICAgICAgICAgICA8L3JkZjpTZXE+CiAgICAgICAgIDwveG1wTU06SGlzdG9yeT4KICAgICAgICAgPGlsbHVzdHJhdG9yOlN0YXJ0dXBQcm9maWxlPkJhc2ljIFJHQjwvaWxsdXN0cmF0b3I6U3RhcnR1cFByb2ZpbGU+CiAgICAgICAgIDxpbGx1c3RyYXRvcjpDcmVhdG9yU3ViVG9vbD5BZG9iZSBJbGx1c3RyYXRvcjwvaWxsdXN0cmF0b3I6Q3JlYXRvclN1YlRvb2w+CiAgICAgICAgIDxwZGY6UHJvZHVjZXI+QWRvYmUgUERGIGxpYnJhcnkgMTAuMDE8L3BkZjpQcm9kdWNlcj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/Pv/uAA5BZG9iZQBkwAAAAAH/2wCEAAICAgICAgICAgIDAgICAwQDAgIDBAUEBAQEBAUGBQUFBQUFBgYHBwgHBwYJCQoKCQkMDAwMDAwMDAwMDAwMDAwBAwMDBQQFCQYGCQ0LCQsNDw4ODg4PDwwMDAwMDw8MDAwMDAwPDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDP/AABEIAJgBkAMBEQACEQEDEQH/xADQAAEAAwACAwEBAAAAAAAAAAAABwgJBgoDBAUCAQEBAAMBAQEBAQAAAAAAAAAAAAUGBwQDAgEIEAABAwQBAwIDBQIICgULBQABAgMEABEFBgchEggxE0EiFFFhMhUJQhZxgVIjs7R2N2JyQyR0dbU2FziRsYI0hdGS0jNTY3OTVDUYlNQlVZYRAAEDAgMEBgUJBwMBCAMAAAEAAgMRBCExBUFREgZhcYGRobHBIjITB/DRQlJyshQ0NeFigqIjM3PxkhXC0uJDU7MkdDbyY5P/2gAMAwEAAhEDEQA/AN/KIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJRFXfm7yHwfEj2K1bEYeVv3Ku0jt1PjvF3VJe7iUpfkqSlXss3B+Ygk2PaLJUpMlYaa65Be48MYzcfRvKhdV1llkRG1pfK72WDPrO4fLeojhcGeQ3LYTmedOaspoMGYO5PGPHLogNxUK6hp/IXd91Q/aCg6P5Llq7HX9pberbxBx+s/GvZs8OpRzdJv731rucsB+hHhTrdjX+brXvyPC3G41P1mg8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HdJ9lDq3mXGWx1c+Z1YUlN1elgetrZy3qkVuHRSnhBNQTluNd2QWO/E/lO71F8d5asLy1vA5o9qgJcC0fS9o1AxywzpVfjvnjk3hSNI1mLBjuY4yDJXgs3FeStla7BwtlK2XEd3b6ElN+tr3vYb3SLbUCJCTWlKtI/aFm+hc56py6027WjhrXgkacCc6YtcK9orszXK9q8sOWN6xkvWcdjcbh2ssyuLJ/KYz7sxxt0FC0JU667YKBtdKQr7DXPb8u2tu4SOJNMcSKeQUnqXxM1fU4nW8bGMDxQ8DSXkHAjEuz6BXpXLPG7x23B/b8Hve5Yh/XsDr76Z2PhTUFqXLlNdWCGVWW2hC7LKlgXsAkG5I5tc1uEQuhidxOdgSMgNuPgpPkHkS8deR3t2wxxxniaHYOc4ez6uYAPrVOdKDOo00qhr+hEoiURKIlESiJREoiURKIlEUC8x8Ms78GNl195vHbziEMiKZHcYGTYjPplNwciyOjjRcQCL+h9bipjTNUNt/TfjGe9pIpxNOw0VL5r5TGqUuICG3DKUr7Ega4PEcrfpN4h2HevpcecVs4fVcxjtviY6bJ23MjY8xgILJZxkGWfYcSxFb71HtacYSruv8x62t0rzvdQMkrXREgNbwgn2iMcT1gr30LlttvaPjumtJlk965jRSNjvVPCwVODS0Gu0qaKi1bUoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIvE8wxIR7UhlD7ZNy24kKTcfcbiv0EjJfL2NeKOAI6V+WIsaKFJjR2o6Vm6ktISgE/f2gULicyvxkbWeyAOpeevxfaURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoiURKIlESiJREoi//9k=" alt="Argentina Incoming" class="nav-logo">
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#tours" data-i18n="nav_tours">Tours</a></li>
+      <li><a href="#experiencias" data-i18n="nav_exp">Experiencias</a></li>
+      <li><a href="#agencias" data-i18n="nav_agencies">Agencias</a></li>
+      <li><a href="#nosotros" data-i18n="nav_about">Nosotros</a></li>
+      <li><a href="#contacto" class="nav-cta" data-i18n="nav_contact">Contactanos</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slider">
+    <div class="hero-slide active" style="background-image:url('img/hero-buenos-aires.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('img/hero-iguazu.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('img/hero-calafate.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('img/hero-madryn.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">Argentina Incoming DMC</div>
+    <h1 data-i18n="hero_title">Tours y Experiencias<br>para descubrir Argentina</h1>
+    <p data-i18n="hero_sub">Desde las Cataratas del Iguazú hasta el Fin del Mundo. Paquetes con vuelos, hoteles 4★ y excursiones diseñados por expertos locales.</p>
+    <div class="hero-buttons">
+      <a href="#tours" class="btn-primary" data-i18n="hero_cta">Ver tours y precios ↓</a>
+      <a href="https://wa.me/5491124650602" target="_blank" class="btn-secondary" data-i18n="hero_wa">Hablar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span>🏆</span> <span data-i18n="trust_1">Operando desde 2013</span></div>
+    <div class="trust-item"><span>🌎</span> <span data-i18n="trust_2">Expertos en Argentina</span></div>
+    <div class="trust-item"><span>🏨</span> <span data-i18n="trust_3">Hoteles 4 estrellas</span></div>
+    <div class="trust-item"><span>✈️</span> <span data-i18n="trust_4">Vuelos internos incluidos</span></div>
+    <div class="trust-item"><span>🤝</span> <span data-i18n="trust_5">Atención personalizada</span></div>
+  </div>
+</div>
+
+<!-- TOURS -->
+<section id="tours">
+  <div class="section-label" data-i18n="tours_label">Nuestros Tours</div>
+  <h2 class="section-title" data-i18n="tours_title">Elegí tu aventura por Argentina</h2>
+  <p class="section-subtitle" data-i18n="tours_sub">Paquetes todo incluido con precios actualizados. Desde escapadas clásicas hasta el viaje completo por el país.</p>
+  <div id="tours-container">
+    <div class="loading" style="display:none"><div class="loading-spinner"></div><span data-i18n="loading">Cargando tours y precios actualizados...</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-strip" id="nosotros">
+  <div class="about-inner">
+    <div class="about-img">
+      <img src="img/about.jpg" alt="Puerto Madryn whale">
+    </div>
+    <div class="about-text">
+      <div class="section-label" data-i18n="about_label">Sobre nosotros</div>
+      <h2 class="section-title" data-i18n="about_title">Viajes que transforman</h2>
+      <p data-i18n="about_p1">Argentina Incoming es un DMC independiente con base en Buenos Aires, dedicado a pasajeros que desean vivir nuestro país de manera auténtica. Nuestro foco: atención personalizada y planificación experta para que tu viaje supere todas tus expectativas.</p>
+      <p data-i18n="about_p2">Seleccionamos cuidadosamente a nuestros proveedores y nos destacamos por la reputación que hemos construido con agencias y viajeros de todo el mundo.</p>
+      <div class="about-stats">
+        <div class="about-stat"><strong>10+</strong><span data-i18n="stat_1">Años de experiencia</span></div>
+        <div class="about-stat"><strong>8</strong><span data-i18n="stat_2">Destinos argentinos</span></div>
+        <div class="about-stat"><strong>24-48hs</strong><span data-i18n="stat_3">Respuesta garantizada</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCES -->
+<div class="exp-section" id="experiencias">
+  <div class="exp-inner">
+    <div class="section-label" data-i18n="exp_label">Experiencias</div>
+    <h2 class="section-title" data-i18n="exp_title">Sumá experiencias a tu viaje</h2>
+    <p class="section-subtitle" data-i18n="exp_sub">Actividades opcionales para complementar tu tour o armar un itinerario a medida.</p>
+    <div class="dest-filter" id="dest-filter"></div>
+    <div class="exp-grid" id="exp-grid"></div>
+  </div>
+</div>
+
+<!-- AGENCIES -->
+<div class="agencies-section" id="agencias">
+  <div class="agencies-inner">
+    <div class="agencies-text">
+      <div class="section-label" data-i18n="ag_label">Para Agencias y Tour Operators</div>
+      <h2 class="section-title" data-i18n="ag_title">Tu socio DMC de confianza en Argentina</h2>
+      <p data-i18n="ag_desc">Trabajamos con agencias y tour operators de Europa, USA y Latinoamérica ofreciendo servicios B2B con tarifas netas, comisiones competitivas y soporte operativo 24/7 durante los tours.</p>
+      <ul class="agencies-features">
+        <li data-i18n="ag_f1">Tours grupales a medida desde 10 hasta 50+ pasajeros</li>
+        <li data-i18n="ag_f2">Tarifas netas confidenciales y estructura de comisiones flexible</li>
+        <li data-i18n="ag_f3">Guías bilingües (español, inglés, portugués, alemán, francés)</li>
+        <li data-i18n="ag_f4">Cotizaciones en menos de 48 horas con itinerario detallado</li>
+        <li data-i18n="ag_f5">Operación propia en todos los destinos: Buenos Aires, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia y Puerto Madryn</li>
+      </ul>
+      <div class="agencies-buttons">
+        <a href="https://tidycal.com/m2020zd/60-minute-meeting" target="_blank" class="btn-webinar" data-i18n="ag_webinar_btn">🎓 Reservar Webinar de Formación</a>
+        <a href="/cdn-cgi/l/email-protection#4d3f283e283f3b2c392422233e0d2c3f2a28233924232c24232e222024232a632e2220632c3f723e382f27282e39700e22233e3821392c6d0f7f0f6d606d0c2a28232e242c" class="btn-agencies-secondary" data-i18n="ag_b2b_btn">Solicitar tarifas B2B</a>
+      </div>
+    </div>
+    <div class="agencies-card">
+      <div class="agencies-card-icon">🎓</div>
+      <h3 data-i18n="webinar_title">Webinar: Vendé Argentina con confianza</h3>
+      <p data-i18n="webinar_desc">Sesión de formación gratuita de 60 minutos donde te presentamos nuestros destinos, productos y herramientas para que puedas ofrecer Argentina a tus clientes con conocimiento experto.</p>
+      <div class="webinar-highlights">
+        <div class="webinar-highlight"><span>🗓</span> <span data-i18n="wh_1">60 minutos online</span></div>
+        <div class="webinar-highlight"><span>🆓</span> <span data-i18n="wh_2">Totalmente gratuito</span></div>
+        <div class="webinar-highlight"><span>🗺</span> <span data-i18n="wh_3">8 destinos cubiertos</span></div>
+        <div class="webinar-highlight"><span>📋</span> <span data-i18n="wh_4">Material incluido</span></div>
+      </div>
+      <a href="https://tidycal.com/m2020zd/60-minute-meeting" target="_blank" class="btn-webinar" style="width:100%;justify-content:center;" data-i18n="webinar_cta">Reservar mi lugar →</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-label" data-i18n="contact_label">Contacto</div>
+      <h2 class="section-title" data-i18n="contact_title">¿Listo para tu viaje por Argentina?</h2>
+      <p data-i18n="contact_desc">Escribinos y nuestro equipo te arma una propuesta personalizada en menos de 48 horas. Sin compromiso.</p>
+      <div class="contact-links">
+        <a href="https://wa.me/5491124650602" target="_blank" class="contact-link">
+          <div class="contact-icon-box">📱</div>
+          <div><strong>WhatsApp</strong><br><span style="opacity:0.6">+54 9 11 2465-0602</span></div>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#b5c7d0c6d0c7c3d4c1dcdadbc6f5d4c7d2d0dbc1dcdbd4dcdbd6dad8dcdbd29bd6dad89bd4c7" class="contact-link">
+          <div class="contact-icon-box">✉️</div>
+          <div><strong>Email</strong><br><span style="opacity:0.6"><span class="__cf_email__" data-cfemail="ee9c8b9d8b9c988f9a8781809dae8f9c898b809a87808f87808d8183878089c08d8183c08f9c">[email&#160;protected]</span></span></div>
+        </a>
+        <a href="tel:+541153657800" class="contact-link">
+          <div class="contact-icon-box">📞</div>
+          <div><strong data-i18n="contact_phone">Teléfono</strong><br><span style="opacity:0.6">+54 11 5365-7800</span></div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-box">
+      <h3 data-i18n="form_title">Pedí tu cotización</h3>
+      <div class="form-row">
+        <input class="form-input" data-i18n-ph="form_name" placeholder="Nombre" type="text">
+        <input class="form-input" placeholder="Email" type="email">
+      </div>
+      <div class="form-row">
+        <input class="form-input" data-i18n-ph="form_country" placeholder="País de origen" type="text">
+        <input class="form-input" data-i18n-ph="form_pax" placeholder="Cantidad de viajeros" type="number">
+      </div>
+      <textarea class="form-input" data-i18n-ph="form_msg" placeholder="Contanos qué destinos te interesan y fechas aproximadas..." style="width:100%;margin-bottom:0.5rem"></textarea>
+      <button class="form-submit" id="form-submit-btn" data-i18n="form_submit">Enviar consulta →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Argentina Incoming DMC · Empresa de viajes y turismo (Leg Nro 15705)<br>
+  Av. Corrientes 6365 Of 606 · Ciudad Autónoma de Buenos Aires · Argentina</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+// =============================================
+// i18n TRANSLATIONS
+// =============================================
+let currentLang = 'es';
+
+const i18n = {
+  es: {
+    // Nav
+    nav_tours: 'Tours', nav_exp: 'Experiencias', nav_agencies: 'Agencias',
+    nav_about: 'Nosotros', nav_contact: 'Contactanos',
+    // Hero
+    hero_title: 'Tours y Experiencias<br>para descubrir Argentina',
+    hero_sub: 'Desde las Cataratas del Iguazú hasta el Fin del Mundo. Paquetes con vuelos, hoteles 4★ y excursiones diseñados por expertos locales.',
+    hero_cta: 'Ver tours y precios ↓', hero_wa: 'Hablar por WhatsApp',
+    // Trust
+    trust_1: 'Operando desde 2013', trust_2: 'Expertos en Argentina',
+    trust_3: 'Hoteles 4 estrellas', trust_4: 'Vuelos internos incluidos',
+    trust_5: 'Atención personalizada',
+    // Tours
+    tours_label: 'Nuestros Tours', tours_title: 'Elegí tu aventura por Argentina',
+    tours_sub: 'Paquetes todo incluido con precios actualizados. Desde escapadas clásicas hasta el viaje completo por el país.',
+    loading: 'Cargando tours y precios actualizados...',
+    // About
+    about_label: 'Sobre nosotros', about_title: 'Viajes que transforman',
+    about_p1: 'Argentina Incoming es un DMC independiente con base en Buenos Aires, dedicado a pasajeros que desean vivir nuestro país de manera auténtica. Nuestro foco: atención personalizada y planificación experta para que tu viaje supere todas tus expectativas.',
+    about_p2: 'Seleccionamos cuidadosamente a nuestros proveedores y nos destacamos por la reputación que hemos construido con agencias y viajeros de todo el mundo.',
+    stat_1: 'Años de experiencia', stat_2: 'Destinos argentinos', stat_3: 'Respuesta garantizada',
+    // Experiences
+    exp_label: 'Experiencias', exp_title: 'Sumá experiencias a tu viaje',
+    exp_sub: 'Actividades opcionales para complementar tu tour o armar un itinerario a medida.',
+    // Agencies
+    ag_label: 'Para Agencias y Tour Operators', ag_title: 'Tu socio DMC de confianza en Argentina',
+    ag_desc: 'Trabajamos con agencias y tour operators de Europa, USA y Latinoamérica ofreciendo servicios B2B con tarifas netas, comisiones competitivas y soporte operativo 24/7 durante los tours.',
+    ag_f1: 'Tours grupales a medida desde 10 hasta 50+ pasajeros',
+    ag_f2: 'Tarifas netas confidenciales y estructura de comisiones flexible',
+    ag_f3: 'Guías bilingües (español, inglés, portugués, alemán, francés)',
+    ag_f4: 'Cotizaciones en menos de 48 horas con itinerario detallado',
+    ag_f5: 'Operación propia en todos los destinos: Buenos Aires, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia y Puerto Madryn',
+    ag_webinar_btn: '🎓 Reservar Webinar de Formación', ag_b2b_btn: 'Solicitar tarifas B2B',
+    webinar_title: 'Webinar: Vendé Argentina con confianza',
+    webinar_desc: 'Sesión de formación gratuita de 60 minutos donde te presentamos nuestros destinos, productos y herramientas para que puedas ofrecer Argentina a tus clientes con conocimiento experto.',
+    wh_1: '60 minutos online', wh_2: 'Totalmente gratuito', wh_3: '8 destinos cubiertos', wh_4: 'Material incluido',
+    webinar_cta: 'Reservar mi lugar →',
+    // Contact
+    contact_label: 'Contacto', contact_title: '¿Listo para tu viaje por Argentina?',
+    contact_desc: 'Escribinos y nuestro equipo te arma una propuesta personalizada en menos de 48 horas. Sin compromiso.',
+    contact_phone: 'Teléfono',
+    form_title: 'Pedí tu cotización', form_name: 'Nombre', form_country: 'País de origen',
+    form_pax: 'Cantidad de viajeros', form_msg: 'Contanos qué destinos te interesan y fechas aproximadas...',
+    form_submit: 'Enviar consulta →',
+    // Dynamic (used in JS)
+    from: 'Desde', per_person: 'por persona', total_pp: 'Total por persona',
+    consult_wa: 'Consultar por WhatsApp →', consult: 'Consultar', all: 'Todos',
+    wa_tour_msg: 'Hola! Me interesa el tour', wa_exp_msg: 'Hola! Me interesa:',
+    wa_form_msg: 'Hola! Quiero cotizar un viaje por Argentina.'
+  },
+  en: {
+    nav_tours: 'Tours', nav_exp: 'Experiences', nav_agencies: 'Agencies',
+    nav_about: 'About Us', nav_contact: 'Contact Us',
+    hero_title: 'Tours & Experiences<br>to discover Argentina',
+    hero_sub: 'From Iguazú Falls to the End of the World. Packages with domestic flights, 4★ hotels and excursions designed by local experts.',
+    hero_cta: 'See tours & prices ↓', hero_wa: 'Chat on WhatsApp',
+    trust_1: 'Operating since 2013', trust_2: 'Argentina experts',
+    trust_3: '4-star hotels', trust_4: 'Domestic flights included',
+    trust_5: 'Personalized service',
+    tours_label: 'Our Tours', tours_title: 'Choose your Argentina adventure',
+    tours_sub: 'All-inclusive packages with updated prices. From classic getaways to the ultimate full-country trip.',
+    loading: 'Loading tours and updated prices...',
+    about_label: 'About us', about_title: 'Journeys that transform',
+    about_p1: 'Argentina Incoming is an independent DMC based in Buenos Aires, dedicated to travelers who want to experience our country authentically. Our focus: personalized attention and expert planning so your trip exceeds all expectations.',
+    about_p2: 'We carefully select our suppliers and stand out for the reputation we\'ve built with agencies and travelers from around the world.',
+    stat_1: 'Years of experience', stat_2: 'Argentine destinations', stat_3: 'Guaranteed response',
+    exp_label: 'Experiences', exp_title: 'Add experiences to your trip',
+    exp_sub: 'Optional activities to complement your tour or create a custom itinerary.',
+    ag_label: 'For Agencies & Tour Operators', ag_title: 'Your trusted DMC partner in Argentina',
+    ag_desc: 'We work with agencies and tour operators from Europe, USA and Latin America offering B2B services with net rates, competitive commissions and 24/7 operational support during tours.',
+    ag_f1: 'Custom group tours from 10 to 50+ passengers',
+    ag_f2: 'Confidential net rates and flexible commission structure',
+    ag_f3: 'Multilingual guides (Spanish, English, Portuguese, German, French)',
+    ag_f4: 'Quotes within 48 hours with detailed itinerary',
+    ag_f5: 'Own operations in all destinations: Buenos Aires, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia and Puerto Madryn',
+    ag_webinar_btn: '🎓 Book Training Webinar', ag_b2b_btn: 'Request B2B rates',
+    webinar_title: 'Webinar: Sell Argentina with confidence',
+    webinar_desc: 'Free 60-minute training session where we present our destinations, products and tools so you can offer Argentina to your clients with expert knowledge.',
+    wh_1: '60 minutes online', wh_2: 'Completely free', wh_3: '8 destinations covered', wh_4: 'Materials included',
+    webinar_cta: 'Book my spot →',
+    contact_label: 'Contact', contact_title: 'Ready for your Argentina trip?',
+    contact_desc: 'Write to us and our team will prepare a personalized proposal in less than 48 hours. No commitment.',
+    contact_phone: 'Phone',
+    form_title: 'Request a quote', form_name: 'Name', form_country: 'Country of origin',
+    form_pax: 'Number of travelers', form_msg: 'Tell us which destinations interest you and approximate dates...',
+    form_submit: 'Send inquiry →',
+    from: 'From', per_person: 'per person', total_pp: 'Total per person',
+    consult_wa: 'Inquire on WhatsApp →', consult: 'Inquire', all: 'All',
+    wa_tour_msg: 'Hi! I\'m interested in the tour', wa_exp_msg: 'Hi! I\'m interested in:',
+    wa_form_msg: 'Hi! I\'d like to get a quote for a trip to Argentina.'
+  }
+};
+
+function t(key) { return i18n[currentLang][key] || i18n['es'][key] || key; }
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+
+  // Translate all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
+  });
+
+  // Translate placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (i18n[lang][key]) el.placeholder = i18n[lang][key];
+  });
+
+  // Update form submit WhatsApp link
+  const submitBtn = document.getElementById('form-submit-btn');
+  if (submitBtn) {
+    submitBtn.onclick = () => window.open('https://wa.me/5491124650602?text='+encodeURIComponent(t('wa_form_msg')),'_blank');
+  }
+
+  // Re-render dynamic content if loaded
+  if (window._toursLoaded) renderTourCards(window._toursResults);
+  if (window._allExp) {
+    updateExpFilters();
+    renderExp(window._currentFilteredExp || window._allExp);
+  }
+}
+
+// =============================================
+// IMAGES & TOURS CONFIG
+// =============================================
+const DEST_IMAGES = {
+  'Buenos Aires':'img/dest-buenos-aires.jpg',
+  'Iguazú':'img/dest-iguazu.jpg',
+  'Salta':'img/dest-salta.jpg',
+  'Mendoza':'img/dest-mendoza.jpg',
+  'Bariloche':'img/dest-bariloche.jpg',
+  'El Calafate':'img/dest-calafate.jpg',
+  'Ushuaia':'img/dest-ushuaia.jpg',
+  'Puerto Madryn':'img/dest-madryn.jpg'
+};
+
+const BASE_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRg_FDPoDS1lb6KS65ph2MPz8bciF9BM3XZjtZrrmvJPW-ih0hT67k0TOBmVnOtjR4LRLtSy1D7tzHz/pub';
+
+const TOURS_CONFIG = [
+  { name:{es:'Clásicos Imperdibles',en:'Unmissable Classics'}, subtitle:{es:'Buenos Aires, Iguazú y El Calafate',en:'Buenos Aires, Iguazú & El Calafate'}, days:{es:'8 a 11 días',en:'8 to 11 days'}, gid:'2129728415', img:DEST_IMAGES['Iguazú'], badge:{es:'MÁS ELEGIDO',en:'MOST POPULAR'}, highlights:{es:['Vuelos internos','Hotel 4★','Cataratas','Glaciar Perito Moreno','Show de Tango'],en:['Domestic flights','4★ Hotel','Iguazú Falls','Perito Moreno Glacier','Tango Show']} },
+  { name:{es:'BA + Patagonia Austral',en:'BA + Southern Patagonia'}, subtitle:{es:'Buenos Aires, El Calafate y Ushuaia',en:'Buenos Aires, El Calafate & Ushuaia'}, days:{es:'8 a 11 días',en:'8 to 11 days'}, gid:'447951004', img:DEST_IMAGES['El Calafate'], badge:{es:'',en:''}, highlights:{es:['Vuelos internos','Hotel 4★','Glaciares','Tierra del Fuego','Canal de Beagle'],en:['Domestic flights','4★ Hotel','Glaciers','Tierra del Fuego','Beagle Channel']} },
+  { name:{es:'Argentina Esencial',en:'Essential Argentina'}, subtitle:{es:'Buenos Aires, Iguazú, El Calafate y Ushuaia',en:'Buenos Aires, Iguazú, El Calafate & Ushuaia'}, days:{es:'10 a 14 días',en:'10 to 14 days'}, gid:'1242544326', img:DEST_IMAGES['Ushuaia'], badge:{es:'RECOMENDADO',en:'RECOMMENDED'}, highlights:{es:['Vuelos internos','Hotel 4★','Cataratas','Glaciares','Fin del Mundo'],en:['Domestic flights','4★ Hotel','Iguazú Falls','Glaciers','End of the World']} },
+  { name:{es:'BA + Patagonia Full',en:'BA + Full Patagonia'}, subtitle:{es:'BA, Bariloche, Calafate, Ushuaia y Puerto Madryn',en:'BA, Bariloche, Calafate, Ushuaia & Puerto Madryn'}, days:{es:'14 a 16 días',en:'14 to 16 days'}, gid:'1713540334', img:DEST_IMAGES['Puerto Madryn'], badge:{es:'AVENTURA COMPLETA',en:'FULL ADVENTURE'}, highlights:{es:['Vuelos internos','Hotel 4★','7 Lagos','Glaciares','Ballenas','Pingüinos'],en:['Domestic flights','4★ Hotel','7 Lakes','Glaciers','Whales','Penguins']} },
+  { name:{es:'BA + Lagos y Glaciares',en:'BA + Lakes & Glaciers'}, subtitle:{es:'Buenos Aires, Bariloche, El Calafate y Ushuaia',en:'Buenos Aires, Bariloche, El Calafate & Ushuaia'}, days:{es:'11 a 13 días',en:'11 to 13 days'}, gid:'386817795', img:DEST_IMAGES['Bariloche'], badge:{es:'',en:''}, highlights:{es:['Vuelos internos','Hotel 4★','7 Lagos','Isla Victoria','Glaciares'],en:['Domestic flights','4★ Hotel','7 Lakes','Victoria Island','Glaciers']} },
+  { name:{es:'Argentina Maravillosa',en:'Wonderful Argentina'}, subtitle:{es:'Buenos Aires, Puerto Madryn, El Calafate e Iguazú',en:'Buenos Aires, Puerto Madryn, El Calafate & Iguazú'}, days:{es:'11 a 13 días',en:'11 to 13 days'}, gid:'1251018929', img:'img/tour-maravillosa.jpg', badge:{es:'WILDLIFE',en:'WILDLIFE'}, highlights:{es:['Vuelos internos','Hotel 4★','Ballenas','Pingüinos','Glaciares','Cataratas'],en:['Domestic flights','4★ Hotel','Whales','Penguins','Glaciers','Iguazú Falls']} },
+  { name:{es:'Argentina Full',en:'Full Argentina'}, subtitle:{es:'8 destinos: BA, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia y Madryn',en:'8 destinations: BA, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia & Madryn'}, days:{es:'21 a 27 días',en:'21 to 27 days'}, gid:'1399729745', img:DEST_IMAGES['Buenos Aires'], badge:{es:'EXPERIENCIA TOTAL',en:'ULTIMATE EXPERIENCE'}, highlights:{es:['8 destinos','Hotel 4★','Cataratas','Vinos','Glaciares','Ballenas'],en:['8 destinations','4★ Hotel','Iguazú Falls','Wines','Glaciers','Whales']} }
+];
+
+// =============================================
+// FETCH & PARSE
+// =============================================
+async function fetchSheet(gid) {
+  try { 
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    const r = await fetch(`${BASE_URL}?gid=${gid}&single=true&output=csv`, {signal: controller.signal}); 
+    clearTimeout(timeout);
+    return Papa.parse(await r.text(),{header:false,skipEmptyLines:true}).data; 
+  } catch(e) { return null; }
+}
+
+function parseTourData(rows) {
+  if (!rows) return {total:0,sections:[]};
+  let sections=[],cur=null,total=0;
+  for (const row of rows) {
+    const c0=(row[0]||'').trim(), last=(row[row.length-1]||'').trim();
+    if (c0.includes('Vuelos')||c0.includes('Hoteles')||c0.includes('Traslados')||c0.includes('Actividades')) { cur={name:c0.replace(/ \(AMICHI\) - Regular/,'').replace(/ con Desayuno incluido/,''),items:[]}; sections.push(cur); continue; }
+    if (c0.includes('Total Por Pasajero')) { total=parseFloat(last.replace(/[^0-9.]/g,''))||0; continue; }
+    if (!c0||c0.includes('http')||c0.includes('aumento')) continue;
+    const price=parseFloat(last.replace(/[^0-9.]/g,''));
+    if (cur&&price>0) cur.items.push({name:c0,price});
+  }
+  return {total,sections:sections.filter(s=>s.items.length>0)};
+}
+
+// Fallback prices so cards render instantly
+const FALLBACK_PRICES = [1850, 1950, 2650, 3200, 1750, 2100, 3950];
+
+async function loadTours() {
+  // 1) Render cards IMMEDIATELY with fallback prices
+  const initialResults = TOURS_CONFIG.map((cfg, i) => ({
+    idx: i, config: cfg, data: { total: FALLBACK_PRICES[i] || 0, sections: [] }
+  }));
+  window._toursResults = initialResults;
+  window._toursLoaded = true;
+  renderTourCards(initialResults);
+
+  // 2) Fetch real prices in parallel (not sequential!)
+  const promises = TOURS_CONFIG.map((cfg, i) => 
+    fetchSheet(cfg.gid).then(rows => ({ idx: i, config: cfg, data: parseTourData(rows) }))
+  );
+  const realResults = await Promise.all(promises);
+  
+  // 3) Update with real prices where available
+  for (const r of realResults) {
+    if (r.data.total > 0) window._toursResults[r.idx] = r;
+  }
+  renderTourCards(window._toursResults);
+  loadExperiences(window._toursResults);
+}
+function renderTourCards(results) {
+  let html = '<div class="tours-grid">';
+  for (const tr of results) {
+    const p = tr.data.total;
+    const name = tr.config.name[currentLang];
+    const sub = tr.config.subtitle[currentLang];
+    const days = tr.config.days[currentLang];
+    const badge = tr.config.badge[currentLang];
+    const imgUrl = tr.config.img;
+    html += `
+      <div class="tour-card" data-idx="${tr.idx}">
+        <div class="tour-card-bg" style="background-image:url('${imgUrl}')"></div>
+        <div class="tour-card-overlay"></div>
+        <div class="tour-card-content">
+          ${badge ? `<div class="tour-card-badge">${badge}</div>` : ''}
+          <div class="tour-card-name">${name}</div>
+          <div class="tour-card-dest">${sub}</div>
+          <div class="tour-card-meta">
+            <div class="tour-card-days">📅 ${days}</div>
+            <div>
+              <div class="tour-card-from">${t('from')}</div>
+              <div class="tour-card-price">USD ${p>0?Math.round(p).toLocaleString('es-AR'):'—'}</div>
+              <div class="tour-card-pp">${t('per_person')}</div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+  html += '</div>';
+  document.getElementById('tours-container').innerHTML = html;
+  // Attach click handlers
+  document.querySelectorAll('.tour-card[data-idx]').forEach(card => {
+    card.addEventListener('click', () => openModal(window._toursResults[parseInt(card.dataset.idx)]));
+  });
+}
+
+async function loadTours() {
+  const results = [];
+  for (let i=0; i<TOURS_CONFIG.length; i++) {
+    const cfg = TOURS_CONFIG[i];
+    const rows = await fetchSheet(cfg.gid);
+    results.push({ idx:i, config:cfg, data:parseTourData(rows) });
+  }
+  window._toursResults = results;
+  window._toursLoaded = true;
+  renderTourCards(results);
+  loadExperiences(results);
+}
+
+// =============================================
+// MODAL
+// =============================================
+function openModal(tr) {
+  const m=document.getElementById('modal-content'), o=document.getElementById('modal-overlay');
+  const icons={'Vuelos':'✈️','Hoteles':'🏨','Traslados':'🚐','Actividades':'🎯'};
+  const name=tr.config.name[currentLang], sub=tr.config.subtitle[currentLang], days=tr.config.days[currentLang];
+  let html=`<div class="modal-header"><button class="modal-close" onclick="closeModal()">✕</button><h2>${name}</h2><p>${sub} · ${days}</p></div><div class="modal-body">`;
+  for (const s of tr.data.sections) {
+    const ic=Object.entries(icons).find(([k])=>s.name.includes(k));
+    html+=`<div class="modal-section-title">${ic?ic[1]+' ':''}${s.name}</div>`;
+    for (const i of s.items) html+=`<div class="modal-item"><span>${i.name}</span><span class="modal-item-price">USD ${Math.round(i.price).toLocaleString('es-AR')}</span></div>`;
+  }
+  html+=`<div class="modal-total"><span>${t('total_pp')}</span><strong>USD ${tr.data.total>0?Math.round(tr.data.total).toLocaleString('es-AR'):'—'}</strong></div>
+    <a href="https://wa.me/5491124650602?text=${encodeURIComponent(t('wa_tour_msg')+' '+name+'. ')}" target="_blank" class="modal-cta">${t('consult_wa')}</a></div>`;
+  m.innerHTML=html; o.classList.add('active'); document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('active');document.body.style.overflow='';}
+document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+
+// =============================================
+// EXPERIENCES
+// =============================================
+function loadExperiences(toursData) {
+  const expMap=new Map();
+  const destImgs={}; for(const[k,v]of Object.entries(DEST_IMAGES)) destImgs[k]=v;
+  for (const tr of toursData) {
+    for (const s of tr.data.sections) {
+      if (!s.name.includes('Actividades')) continue;
+      for (const item of s.items) {
+        if (!expMap.has(item.name)) {
+          let dest='Argentina';
+          if(item.name.match(/Buenos Aires|Delta|Tango/i))dest='Buenos Aires';
+          else if(item.name.match(/Cataratas|Gran Aventura|Jungle/i))dest='Iguazú';
+          else if(item.name.match(/Quebrada|Cafayate|Tren a las/i))dest='Salta';
+          else if(item.name.match(/Bodega|Valle de Uco|Cabalgata/i))dest='Mendoza';
+          else if(item.name.match(/7 Lagos|Isla Victoria|Arrayanes|Circuito/i))dest='Bariloche';
+          else if(item.name.match(/Glaciar|Perito|Safari|Chaltén|Torres del Paine|Nibepo|City Tour Calafate/i))dest='El Calafate';
+          else if(item.name.match(/Tierra del Fuego|Canal de Beagle|Tren fin|City Tour Ushuaia/i))dest='Ushuaia';
+          else if(item.name.match(/Península|Punta Tombo|Ballenas|Snorkeling/i))dest='Puerto Madryn';
+          expMap.set(item.name,{...item,dest});
+        }
+      }
+    }
+  }
+  window._allExp=[...expMap.values()];
+  window._destImgs=destImgs;
+  window._currentFilteredExp=window._allExp;
+  updateExpFilters();
+  renderExp(window._allExp);
+}
+
+function updateExpFilters() {
+  const dests=[...new Set(window._allExp.map(e=>e.dest))];
+  document.getElementById('dest-filter').innerHTML=[t('all'),...dests].map((d,i)=>
+    `<button class="${i===0?'active':''}" onclick="filterExp('${d}',this)">${d}</button>`
+  ).join('');
+}
+
+function renderExp(exps) {
+  const imgs=window._destImgs;
+  document.getElementById('exp-grid').innerHTML=exps.map(e=>`
+    <div class="exp-card">
+      <div class="exp-card-img" style="background-image:url('${imgs[e.dest]||imgs['Buenos Aires']}')">
+        <div class="exp-card-dest">${e.dest}</div>
+      </div>
+      <div class="exp-card-body">
+        <div class="exp-card-name">${e.name}</div>
+        <div class="exp-card-footer">
+          <div class="exp-card-price">USD ${Math.round(e.price).toLocaleString('es-AR')}<small>${t('per_person')}</small></div>
+          <a href="https://wa.me/5491124650602?text=${encodeURIComponent(t('wa_exp_msg')+' '+e.name)}" target="_blank" class="exp-card-btn">${t('consult')}</a>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function filterExp(dest,btn) {
+  document.querySelectorAll('.dest-filter button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = dest===t('all') ? window._allExp : window._allExp.filter(e=>e.dest===dest);
+  window._currentFilteredExp = filtered;
+  renderExp(filtered);
+}
+
+// Hero slider
+let slideIdx=0; const slides=document.querySelectorAll('.hero-slide');
+setInterval(()=>{slides[slideIdx].classList.remove('active');slideIdx=(slideIdx+1)%slides.length;slides[slideIdx].classList.add('active');},5000);
+
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50));
+
+// Smooth scroll
+do
