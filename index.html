@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argentina Incoming | Tours y Experiencias</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #006189;
+  --blue-dark: #004a6a;
+  --blue-light: #e8f4f8;
+  --orange: #F19F00;
+  --orange-hover: #d98e00;
+  --dark: #1F2326;
+  --dark2: #25262a;
+  --cream: #f5f5f5;
+  --white: #ffffff;
+  --text: #4C5359;
+  --text-light: #8a8f96;
+  --radius: 12px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family:'Archivo',sans-serif; color:var(--text); background:var(--white); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+/* NAV */
+.nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:0.8rem 2rem; display:flex; justify-content:space-between; align-items:center; transition:all 0.4s; }
+.nav.scrolled { background:var(--dark); box-shadow:0 4px 30px rgba(0,0,0,0.15); }
+.nav-logo { height:50px; filter:brightness(10); transition:all 0.3s; }
+.nav.scrolled .nav-logo { height:40px; }
+.nav-right { display:flex; align-items:center; gap:1.5rem; }
+.nav-links { display:flex; gap:1.8rem; list-style:none; align-items:center; }
+.nav-links a { color:rgba(255,255,255,0.9); text-decoration:none; font-weight:500; font-size:0.9rem; letter-spacing:0.03em; transition:color 0.3s; }
+.nav-links a:hover { color:var(--orange); }
+.nav-cta { background:var(--orange); color:var(--dark)!important; padding:0.55rem 1.3rem; border-radius:6px; font-weight:700; font-size:0.85rem; transition:all 0.3s; }
+.nav-cta:hover { background:var(--orange-hover); transform:translateY(-1px); }
+
+/* LANGUAGE TOGGLE */
+.lang-toggle { display:flex; background:rgba(255,255,255,0.12); border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.2); }
+.lang-btn { padding:0.3rem 0.7rem; font-family:'Archivo',sans-serif; font-size:0.75rem; font-weight:700; border:none; cursor:pointer; transition:all 0.3s; background:transparent; color:rgba(255,255,255,0.7); letter-spacing:0.05em; }
+.lang-btn.active { background:var(--orange); color:var(--dark); }
+.nav.scrolled .lang-toggle { border-color:rgba(255,255,255,0.15); }
+
+.hamburger { display:none; background:none; border:none; cursor:pointer; padding:0.5rem; }
+.hamburger span { display:block; width:24px; height:2px; background:white; margin:5px 0; }
+
+/* HERO */
+.hero { position:relative; height:100vh; min-height:600px; display:flex; align-items:flex-end; overflow:hidden; }
+.hero-slider { position:absolute; inset:0; }
+.hero-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.5s ease; }
+.hero-slide.active { opacity:1; }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(31,35,38,0.85) 0%, rgba(31,35,38,0.2) 50%, rgba(31,35,38,0.4) 100%); }
+.hero-content { position:relative; z-index:2; padding:0 3rem 5rem; max-width:850px; animation:fadeUp 1s ease-out 0.3s both; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+.hero-label { font-size:0.8rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
+.hero-label::before { content:''; width:30px; height:2px; background:var(--orange); }
+.hero h1 { font-family:'Archivo Black',sans-serif; font-size:clamp(2.5rem,5.5vw,4.2rem); color:var(--white); line-height:1.1; margin-bottom:1rem; letter-spacing:-0.02em; }
+.hero p { font-size:1.15rem; color:rgba(255,255,255,0.75); font-weight:300; max-width:550px; line-height:1.65; margin-bottom:2rem; }
+.hero-buttons { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-primary { display:inline-flex; align-items:center; gap:0.5rem; background:var(--orange); color:var(--dark); padding:0.9rem 2rem; border-radius:6px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.3s; border:none; cursor:pointer; font-family:'Archivo',sans-serif; }
+.btn-primary:hover { background:var(--orange-hover); transform:translateY(-2px); box-shadow:0 6px 20px rgba(241,159,0,0.35); }
+.btn-secondary { display:inline-flex; align-items:center; gap:0.5rem; background:transparent; color:var(--white); padding:0.9rem 2rem; border-radius:6px; font-weight:600; font-size:1rem; text-decoration:none; border:2px solid rgba(255,255,255,0.35); transition:all 0.3s; cursor:pointer; font-family:'Archivo',sans-serif; }
+.btn-secondary:hover { border-color:var(--white); background:rgba(255,255,255,0.08); }
+
+/* TRUST BAR */
+.trust-bar { background:var(--white); border-bottom:1px solid #eee; padding:1.5rem 2rem; }
+.trust-bar-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:0.6rem; font-size:0.85rem; color:var(--text); font-weight:500; }
+.trust-item span { font-size:1.2rem; }
+
+/* SECTIONS */
+section { padding:5rem 2rem; max-width:1280px; margin:0 auto; }
+.section-label { font-size:0.75rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue); margin-bottom:0.5rem; }
+.section-title { font-family:'Archivo Black',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--dark); margin-bottom:0.5rem; letter-spacing:-0.01em; }
+.section-subtitle { color:var(--text-light); font-size:1.05rem; font-weight:300; margin-bottom:3rem; max-width:550px; line-height:1.6; }
+
+/* TOUR CARDS */
+.tours-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:1.5rem; }
+.tour-card { position:relative; border-radius:var(--radius); overflow:hidden; cursor:pointer; aspect-ratio:4/3; transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+.tour-card:hover { transform:scale(1.02); }
+.tour-card-bg { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform 0.6s ease; }
+.tour-card:hover .tour-card-bg { transform:scale(1.08); }
+.tour-card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(31,35,38,0.9) 0%,rgba(31,35,38,0.15) 55%); transition:background 0.3s; }
+.tour-card:hover .tour-card-overlay { background:linear-gradient(to top,rgba(31,35,38,0.95) 0%,rgba(31,35,38,0.3) 55%); }
+.tour-card-content { position:absolute; bottom:0; left:0; right:0; padding:1.5rem; z-index:2; }
+.tour-card-badge { display:inline-block; background:var(--orange); color:var(--dark); font-weight:700; font-size:0.7rem; padding:0.3rem 0.7rem; border-radius:4px; margin-bottom:0.6rem; letter-spacing:0.05em; text-transform:uppercase; }
+.tour-card-name { font-family:'Archivo Black',sans-serif; font-size:1.5rem; color:var(--white); line-height:1.15; margin-bottom:0.3rem; }
+.tour-card-dest { color:rgba(255,255,255,0.65); font-size:0.85rem; font-weight:300; margin-bottom:0.8rem; }
+.tour-card-meta { display:flex; justify-content:space-between; align-items:flex-end; }
+.tour-card-days { color:rgba(255,255,255,0.7); font-size:0.8rem; font-weight:500; }
+.tour-card-from { font-size:0.7rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; }
+.tour-card-price { font-family:'Archivo Black',sans-serif; font-size:1.6rem; color:var(--orange); line-height:1; }
+.tour-card-pp { font-size:0.7rem; color:rgba(255,255,255,0.5); }
+
+/* ABOUT */
+.about-strip { background:var(--dark); padding:5rem 2rem; max-width:100%; }
+.about-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.about-img { border-radius:var(--radius); overflow:hidden; aspect-ratio:4/3; }
+.about-img img { width:100%; height:100%; object-fit:cover; }
+.about-text .section-label { color:var(--orange); }
+.about-text .section-title { color:var(--white); }
+.about-text p { color:rgba(255,255,255,0.7); font-weight:300; line-height:1.7; margin-bottom:1.5rem; }
+.about-stats { display:flex; gap:2.5rem; margin-top:2rem; }
+.about-stat strong { font-family:'Archivo Black',sans-serif; font-size:2rem; color:var(--orange); display:block; }
+.about-stat span { font-size:0.8rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; }
+
+/* AGENCIES */
+.agencies-section { background:var(--blue); padding:5rem 2rem; max-width:100%; position:relative; overflow:hidden; }
+.agencies-section::before { content:''; position:absolute; top:-50%; right:-10%; width:500px; height:500px; background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%); border-radius:50%; }
+.agencies-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:4rem; align-items:center; position:relative; z-index:1; }
+.agencies-text .section-label { color:rgba(255,255,255,0.6); }
+.agencies-text .section-title { color:var(--white); font-size:clamp(1.8rem,3vw,2.4rem); }
+.agencies-text p { color:rgba(255,255,255,0.8); font-weight:300; line-height:1.7; margin-bottom:1.2rem; }
+.agencies-features { list-style:none; margin:1.5rem 0 2rem; }
+.agencies-features li { display:flex; align-items:flex-start; gap:0.8rem; color:rgba(255,255,255,0.9); font-size:0.95rem; margin-bottom:0.8rem; line-height:1.5; }
+.agencies-features li::before { content:'✓'; flex-shrink:0; width:24px; height:24px; background:var(--orange); color:var(--dark); font-weight:800; font-size:0.75rem; display:flex; align-items:center; justify-content:center; border-radius:50%; margin-top:0.1rem; }
+.agencies-buttons { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-webinar { display:inline-flex; align-items:center; gap:0.6rem; background:var(--orange); color:var(--dark); padding:0.9rem 2rem; border-radius:6px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.3s; font-family:'Archivo',sans-serif; }
+.btn-webinar:hover { background:var(--orange-hover); transform:translateY(-2px); box-shadow:0 6px 20px rgba(241,159,0,0.35); }
+.btn-agencies-secondary { display:inline-flex; align-items:center; gap:0.5rem; background:transparent; color:var(--white); padding:0.9rem 2rem; border-radius:6px; font-weight:600; font-size:1rem; text-decoration:none; border:2px solid rgba(255,255,255,0.3); transition:all 0.3s; font-family:'Archivo',sans-serif; }
+.btn-agencies-secondary:hover { border-color:var(--white); background:rgba(255,255,255,0.08); }
+.agencies-card { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius); padding:2rem; text-align:center; }
+.agencies-card-icon { font-size:3rem; margin-bottom:1rem; }
+.agencies-card h3 { font-family:'Archivo Black',sans-serif; color:white; font-size:1.3rem; margin-bottom:0.5rem; }
+.agencies-card p { color:rgba(255,255,255,0.7); font-size:0.9rem; font-weight:300; line-height:1.6; margin-bottom:1.5rem; }
+.webinar-highlights { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.5rem; text-align:left; }
+.webinar-highlight { display:flex; align-items:center; gap:0.5rem; color:rgba(255,255,255,0.85); font-size:0.8rem; font-weight:500; }
+.webinar-highlight span { font-size:1rem; }
+
+/* EXPERIENCES */
+.exp-section { background:var(--cream); max-width:100%; padding:5rem 2rem; }
+.exp-inner { max-width:1280px; margin:0 auto; }
+.dest-filter { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+.dest-filter button { background:var(--white); border:1px solid #ddd; padding:0.5rem 1rem; border-radius:6px; font-family:'Archivo',sans-serif; font-weight:500; font-size:0.85rem; cursor:pointer; transition:all 0.2s; color:var(--text); }
+.dest-filter button:hover,.dest-filter button.active { background:var(--blue); border-color:var(--blue); color:var(--white); }
+.exp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
+.exp-card { background:var(--white); border-radius:10px; overflow:hidden; transition:all 0.3s; border:1px solid #eee; }
+.exp-card:hover { transform:translateY(-3px); box-shadow:0 8px 30px rgba(0,0,0,0.08); }
+.exp-card-img { height:150px; background-size:cover; background-position:center; position:relative; }
+.exp-card-dest { position:absolute; bottom:0.6rem; left:0.6rem; background:var(--blue); color:white; font-size:0.7rem; font-weight:600; padding:0.25rem 0.6rem; border-radius:4px; }
+.exp-card-body { padding:1rem 1.2rem; }
+.exp-card-name { font-weight:700; font-size:0.95rem; color:var(--dark); margin-bottom:0.6rem; line-height:1.3; }
+.exp-card-footer { display:flex; justify-content:space-between; align-items:center; }
+.exp-card-price { font-family:'Archivo Black',sans-serif; font-size:1.2rem; color:var(--blue); }
+.exp-card-price small { font-family:'Archivo',sans-serif; font-weight:300; font-size:0.7rem; color:var(--text-light); display:block; }
+.exp-card-btn { background:transparent; border:1.5px solid var(--blue); color:var(--blue); padding:0.4rem 0.9rem; border-radius:5px; font-family:'Archivo',sans-serif; font-weight:600; font-size:0.75rem; cursor:pointer; transition:all 0.2s; text-decoration:none; }
+.exp-card-btn:hover { background:var(--blue); color:white; }
+
+/* MODAL */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px); z-index:200; align-items:center; justify-content:center; padding:1.5rem; }
+.modal-overlay.active { display:flex; }
+.modal { background:var(--white); border-radius:var(--radius); max-width:680px; width:100%; max-height:88vh; overflow-y:auto; position:relative; animation:modalIn 0.3s ease-out; }
+@keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.modal-header { background:var(--dark); padding:2rem 2rem 1.5rem; position:relative; }
+.modal-close { position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,0.1); border:none; width:32px; height:32px; border-radius:50%; color:white; font-size:1rem; cursor:pointer; }
+.modal-close:hover { background:rgba(255,255,255,0.2); }
+.modal-header h2 { font-family:'Archivo Black',sans-serif; color:var(--white); font-size:1.6rem; margin-bottom:0.3rem; }
+.modal-header p { color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:300; }
+.modal-body { padding:1.5rem 2rem 2rem; }
+.modal-section-title { font-weight:700; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin:1.5rem 0 0.6rem; padding-bottom:0.4rem; border-bottom:2px solid var(--blue-light); }
+.modal-section-title:first-child { margin-top:0; }
+.modal-item { display:flex; justify-content:space-between; align-items:center; padding:0.55rem 0; font-size:0.9rem; border-bottom:1px solid #f0f0f0; }
+.modal-item-price { font-weight:700; color:var(--dark); white-space:nowrap; }
+.modal-total { display:flex; justify-content:space-between; align-items:center; margin-top:1.5rem; padding:1.2rem 1.5rem; background:var(--dark); border-radius:8px; color:white; }
+.modal-total span { font-weight:500; }
+.modal-total strong { font-family:'Archivo Black',sans-serif; font-size:1.8rem; color:var(--orange); }
+.modal-cta { display:block; width:100%; margin-top:1.2rem; padding:0.9rem; background:var(--orange); color:var(--dark); border:none; border-radius:6px; font-family:'Archivo',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s; text-align:center; text-decoration:none; }
+.modal-cta:hover { background:var(--orange-hover); }
+
+/* CONTACT */
+.contact-section { background:var(--dark); padding:5rem 2rem; max-width:100%; }
+.contact-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+.contact-left .section-label { color:var(--orange); }
+.contact-left .section-title { color:white; font-size:2.2rem; }
+.contact-left p { color:rgba(255,255,255,0.6); font-weight:300; line-height:1.7; margin-bottom:2rem; }
+.contact-links { display:flex; flex-direction:column; gap:1.2rem; }
+.contact-link { display:flex; align-items:center; gap:1rem; color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.95rem; transition:all 0.2s; }
+.contact-link:hover { color:var(--orange); }
+.contact-icon-box { width:44px; height:44px; background:rgba(255,255,255,0.08); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+.contact-form-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius); padding:2rem; }
+.contact-form-box h3 { font-family:'Archivo Black',sans-serif; color:white; font-size:1.2rem; margin-bottom:1.5rem; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem; }
+.form-input { width:100%; padding:0.75rem 1rem; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:white; font-family:'Archivo',sans-serif; font-size:0.9rem; outline:none; transition:all 0.2s; }
+.form-input:focus { border-color:var(--orange); background:rgba(255,255,255,0.12); }
+.form-input::placeholder { color:rgba(255,255,255,0.35); }
+textarea.form-input { resize:vertical; min-height:100px; }
+.form-submit { width:100%; padding:0.9rem; background:var(--orange); color:var(--dark); border:none; border-radius:6px; font-family:'Archivo',sans-serif; font-weight:700; font-size:1rem; cursor:pointer; transition:all 0.3s; margin-top:0.5rem; }
+.form-submit:hover { background:var(--orange-hover); }
+
+footer { background:#191b1e; color:rgba(255,255,255,0.4); text-align:center; padding:2rem; font-size:0.8rem; border-top:1px solid rgba(255,255,255,0.06); }
+.loading { text-align:center; padding:5rem 2rem; color:var(--text-light); }
+.loading-spinner { width:36px; height:36px; border:3px solid #ddd; border-top-color:var(--blue); border-radius:50%; animation:spin 0.7s linear infinite; margin:0 auto 1rem; }
+@keyframes spin { to{transform:rotate(360deg)} }
+
+@media(max-width:900px) { .about-inner,.contact-inner,.agencies-inner{grid-template-columns:1fr;gap:2rem} .about-img{display:none} }
+@media(max-width:768px) { .nav-links{display:none} .hamburger{display:block} .hero-content{padding:0 1.5rem 3.5rem} section{padding:3rem 1.2rem} .tours-grid{grid-template-columns:1fr} .exp-grid{grid-template-columns:1fr 1fr} .form-row{grid-template-columns:1fr} .tour-card{aspect-ratio:3/2} .webinar-highlights{grid-template-columns:1fr} }
+@media(max-width:480px) { .exp-grid{grid-template-columns:1fr} .trust-bar-inner{gap:1.5rem} .agencies-buttons{flex-direction:column} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <img src="img/logo.jpg" alt="Argentina Incoming" class="nav-logo">
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#tours" data-i18n="nav_tours">Tours</a></li>
+      <li><a href="#experiencias" data-i18n="nav_exp">Experiencias</a></li>
+      <li><a href="#agencias" data-i18n="nav_agencies">Agencias</a></li>
+      <li><a href="#nosotros" data-i18n="nav_about">Nosotros</a></li>
+      <li><a href="#contacto" class="nav-cta" data-i18n="nav_contact">Contactanos</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slider">
+    <div class="hero-slide active" style="background-image:url('img/hero-buenos-aires.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('img/hero-iguazu.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('img/hero-calafate.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('img/hero-madryn.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">Argentina Incoming DMC</div>
+    <h1 data-i18n="hero_title">Tours y Experiencias<br>para descubrir Argentina</h1>
+    <p data-i18n="hero_sub">Desde las Cataratas del Iguazú hasta el Fin del Mundo. Paquetes con vuelos, hoteles 4★ y excursiones diseñados por expertos locales.</p>
+    <div class="hero-buttons">
+      <a href="#tours" class="btn-primary" data-i18n="hero_cta">Ver tours y precios ↓</a>
+      <a href="https://wa.me/5491124650602" target="_blank" class="btn-secondary" data-i18n="hero_wa">Hablar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span>🏆</span> <span data-i18n="trust_1">Operando desde 2013</span></div>
+    <div class="trust-item"><span>🌎</span> <span data-i18n="trust_2">Expertos en Argentina</span></div>
+    <div class="trust-item"><span>🏨</span> <span data-i18n="trust_3">Hoteles 4 estrellas</span></div>
+    <div class="trust-item"><span>✈️</span> <span data-i18n="trust_4">Vuelos internos incluidos</span></div>
+    <div class="trust-item"><span>🤝</span> <span data-i18n="trust_5">Atención personalizada</span></div>
+  </div>
+</div>
+
+<!-- TOURS -->
+<section id="tours">
+  <div class="section-label" data-i18n="tours_label">Nuestros Tours</div>
+  <h2 class="section-title" data-i18n="tours_title">Elegí tu aventura por Argentina</h2>
+  <p class="section-subtitle" data-i18n="tours_sub">Paquetes todo incluido con precios actualizados. Desde escapadas clásicas hasta el viaje completo por el país.</p>
+  <div id="tours-container">
+    <div class="loading"><div class="loading-spinner"></div><span data-i18n="loading">Cargando tours y precios actualizados...</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-strip" id="nosotros">
+  <div class="about-inner">
+    <div class="about-img">
+      <img src="img/about.jpg" alt="Puerto Madryn whale">
+    </div>
+    <div class="about-text">
+      <div class="section-label" data-i18n="about_label">Sobre nosotros</div>
+      <h2 class="section-title" data-i18n="about_title">Viajes que transforman</h2>
+      <p data-i18n="about_p1">Argentina Incoming es un DMC independiente con base en Buenos Aires, dedicado a pasajeros que desean vivir nuestro país de manera auténtica. Nuestro foco: atención personalizada y planificación experta para que tu viaje supere todas tus expectativas.</p>
+      <p data-i18n="about_p2">Seleccionamos cuidadosamente a nuestros proveedores y nos destacamos por la reputación que hemos construido con agencias y viajeros de todo el mundo.</p>
+      <div class="about-stats">
+        <div class="about-stat"><strong>10+</strong><span data-i18n="stat_1">Años de experiencia</span></div>
+        <div class="about-stat"><strong>8</strong><span data-i18n="stat_2">Destinos argentinos</span></div>
+        <div class="about-stat"><strong>24-48hs</strong><span data-i18n="stat_3">Respuesta garantizada</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCES -->
+<div class="exp-section" id="experiencias">
+  <div class="exp-inner">
+    <div class="section-label" data-i18n="exp_label">Experiencias</div>
+    <h2 class="section-title" data-i18n="exp_title">Sumá experiencias a tu viaje</h2>
+    <p class="section-subtitle" data-i18n="exp_sub">Actividades opcionales para complementar tu tour o armar un itinerario a medida.</p>
+    <div class="dest-filter" id="dest-filter"></div>
+    <div class="exp-grid" id="exp-grid"></div>
+  </div>
+</div>
+
+<!-- AGENCIES -->
+<div class="agencies-section" id="agencias">
+  <div class="agencies-inner">
+    <div class="agencies-text">
+      <div class="section-label" data-i18n="ag_label">Para Agencias y Tour Operators</div>
+      <h2 class="section-title" data-i18n="ag_title">Tu socio DMC de confianza en Argentina</h2>
+      <p data-i18n="ag_desc">Trabajamos con agencias y tour operators de Europa, USA y Latinoamérica ofreciendo servicios B2B con tarifas netas, comisiones competitivas y soporte operativo 24/7 durante los tours.</p>
+      <ul class="agencies-features">
+        <li data-i18n="ag_f1">Tours grupales a medida desde 10 hasta 50+ pasajeros</li>
+        <li data-i18n="ag_f2">Tarifas netas confidenciales y estructura de comisiones flexible</li>
+        <li data-i18n="ag_f3">Guías bilingües (español, inglés, portugués, alemán, francés)</li>
+        <li data-i18n="ag_f4">Cotizaciones en menos de 48 horas con itinerario detallado</li>
+        <li data-i18n="ag_f5">Operación propia en todos los destinos: Buenos Aires, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia y Puerto Madryn</li>
+      </ul>
+      <div class="agencies-buttons">
+        <a href="https://tidycal.com/m2020zd/60-minute-meeting" target="_blank" class="btn-webinar" data-i18n="ag_webinar_btn">🎓 Reservar Webinar de Formación</a>
+        <a href="/cdn-cgi/l/email-protection#4d3f283e283f3b2c392422233e0d2c3f2a28233924232c24232e222024232a632e2220632c3f723e382f27282e39700e22233e3821392c6d0f7f0f6d606d0c2a28232e242c" class="btn-agencies-secondary" data-i18n="ag_b2b_btn">Solicitar tarifas B2B</a>
+      </div>
+    </div>
+    <div class="agencies-card">
+      <div class="agencies-card-icon">🎓</div>
+      <h3 data-i18n="webinar_title">Webinar: Vendé Argentina con confianza</h3>
+      <p data-i18n="webinar_desc">Sesión de formación gratuita de 60 minutos donde te presentamos nuestros destinos, productos y herramientas para que puedas ofrecer Argentina a tus clientes con conocimiento experto.</p>
+      <div class="webinar-highlights">
+        <div class="webinar-highlight"><span>🗓</span> <span data-i18n="wh_1">60 minutos online</span></div>
+        <div class="webinar-highlight"><span>🆓</span> <span data-i18n="wh_2">Totalmente gratuito</span></div>
+        <div class="webinar-highlight"><span>🗺</span> <span data-i18n="wh_3">8 destinos cubiertos</span></div>
+        <div class="webinar-highlight"><span>📋</span> <span data-i18n="wh_4">Material incluido</span></div>
+      </div>
+      <a href="https://tidycal.com/m2020zd/60-minute-meeting" target="_blank" class="btn-webinar" style="width:100%;justify-content:center;" data-i18n="webinar_cta">Reservar mi lugar →</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contacto">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="section-label" data-i18n="contact_label">Contacto</div>
+      <h2 class="section-title" data-i18n="contact_title">¿Listo para tu viaje por Argentina?</h2>
+      <p data-i18n="contact_desc">Escribinos y nuestro equipo te arma una propuesta personalizada en menos de 48 horas. Sin compromiso.</p>
+      <div class="contact-links">
+        <a href="https://wa.me/5491124650602" target="_blank" class="contact-link">
+          <div class="contact-icon-box">📱</div>
+          <div><strong>WhatsApp</strong><br><span style="opacity:0.6">+54 9 11 2465-0602</span></div>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#b5c7d0c6d0c7c3d4c1dcdadbc6f5d4c7d2d0dbc1dcdbd4dcdbd6dad8dcdbd29bd6dad89bd4c7" class="contact-link">
+          <div class="contact-icon-box">✉️</div>
+          <div><strong>Email</strong><br><span style="opacity:0.6"><span class="__cf_email__" data-cfemail="ee9c8b9d8b9c988f9a8781809dae8f9c898b809a87808f87808d8183878089c08d8183c08f9c">[email&#160;protected]</span></span></div>
+        </a>
+        <a href="tel:+541153657800" class="contact-link">
+          <div class="contact-icon-box">📞</div>
+          <div><strong data-i18n="contact_phone">Teléfono</strong><br><span style="opacity:0.6">+54 11 5365-7800</span></div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-box">
+      <h3 data-i18n="form_title">Pedí tu cotización</h3>
+      <div class="form-row">
+        <input class="form-input" data-i18n-ph="form_name" placeholder="Nombre" type="text">
+        <input class="form-input" placeholder="Email" type="email">
+      </div>
+      <div class="form-row">
+        <input class="form-input" data-i18n-ph="form_country" placeholder="País de origen" type="text">
+        <input class="form-input" data-i18n-ph="form_pax" placeholder="Cantidad de viajeros" type="number">
+      </div>
+      <textarea class="form-input" data-i18n-ph="form_msg" placeholder="Contanos qué destinos te interesan y fechas aproximadas..." style="width:100%;margin-bottom:0.5rem"></textarea>
+      <button class="form-submit" id="form-submit-btn" data-i18n="form_submit">Enviar consulta →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Argentina Incoming DMC · Empresa de viajes y turismo (Leg Nro 15705)<br>
+  Av. Corrientes 6365 Of 606 · Ciudad Autónoma de Buenos Aires · Argentina</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+// =============================================
+// i18n TRANSLATIONS
+// =============================================
+let currentLang = 'es';
+
+const i18n = {
+  es: {
+    // Nav
+    nav_tours: 'Tours', nav_exp: 'Experiencias', nav_agencies: 'Agencias',
+    nav_about: 'Nosotros', nav_contact: 'Contactanos',
+    // Hero
+    hero_title: 'Tours y Experiencias<br>para descubrir Argentina',
+    hero_sub: 'Desde las Cataratas del Iguazú hasta el Fin del Mundo. Paquetes con vuelos, hoteles 4★ y excursiones diseñados por expertos locales.',
+    hero_cta: 'Ver tours y precios ↓', hero_wa: 'Hablar por WhatsApp',
+    // Trust
+    trust_1: 'Operando desde 2013', trust_2: 'Expertos en Argentina',
+    trust_3: 'Hoteles 4 estrellas', trust_4: 'Vuelos internos incluidos',
+    trust_5: 'Atención personalizada',
+    // Tours
+    tours_label: 'Nuestros Tours', tours_title: 'Elegí tu aventura por Argentina',
+    tours_sub: 'Paquetes todo incluido con precios actualizados. Desde escapadas clásicas hasta el viaje completo por el país.',
+    loading: 'Cargando tours y precios actualizados...',
+    // About
+    about_label: 'Sobre nosotros', about_title: 'Viajes que transforman',
+    about_p1: 'Argentina Incoming es un DMC independiente con base en Buenos Aires, dedicado a pasajeros que desean vivir nuestro país de manera auténtica. Nuestro foco: atención personalizada y planificación experta para que tu viaje supere todas tus expectativas.',
+    about_p2: 'Seleccionamos cuidadosamente a nuestros proveedores y nos destacamos por la reputación que hemos construido con agencias y viajeros de todo el mundo.',
+    stat_1: 'Años de experiencia', stat_2: 'Destinos argentinos', stat_3: 'Respuesta garantizada',
+    // Experiences
+    exp_label: 'Experiencias', exp_title: 'Sumá experiencias a tu viaje',
+    exp_sub: 'Actividades opcionales para complementar tu tour o armar un itinerario a medida.',
+    // Agencies
+    ag_label: 'Para Agencias y Tour Operators', ag_title: 'Tu socio DMC de confianza en Argentina',
+    ag_desc: 'Trabajamos con agencias y tour operators de Europa, USA y Latinoamérica ofreciendo servicios B2B con tarifas netas, comisiones competitivas y soporte operativo 24/7 durante los tours.',
+    ag_f1: 'Tours grupales a medida desde 10 hasta 50+ pasajeros',
+    ag_f2: 'Tarifas netas confidenciales y estructura de comisiones flexible',
+    ag_f3: 'Guías bilingües (español, inglés, portugués, alemán, francés)',
+    ag_f4: 'Cotizaciones en menos de 48 horas con itinerario detallado',
+    ag_f5: 'Operación propia en todos los destinos: Buenos Aires, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia y Puerto Madryn',
+    ag_webinar_btn: '🎓 Reservar Webinar de Formación', ag_b2b_btn: 'Solicitar tarifas B2B',
+    webinar_title: 'Webinar: Vendé Argentina con confianza',
+    webinar_desc: 'Sesión de formación gratuita de 60 minutos donde te presentamos nuestros destinos, productos y herramientas para que puedas ofrecer Argentina a tus clientes con conocimiento experto.',
+    wh_1: '60 minutos online', wh_2: 'Totalmente gratuito', wh_3: '8 destinos cubiertos', wh_4: 'Material incluido',
+    webinar_cta: 'Reservar mi lugar →',
+    // Contact
+    contact_label: 'Contacto', contact_title: '¿Listo para tu viaje por Argentina?',
+    contact_desc: 'Escribinos y nuestro equipo te arma una propuesta personalizada en menos de 48 horas. Sin compromiso.',
+    contact_phone: 'Teléfono',
+    form_title: 'Pedí tu cotización', form_name: 'Nombre', form_country: 'País de origen',
+    form_pax: 'Cantidad de viajeros', form_msg: 'Contanos qué destinos te interesan y fechas aproximadas...',
+    form_submit: 'Enviar consulta →',
+    // Dynamic (used in JS)
+    from: 'Desde', per_person: 'por persona', total_pp: 'Total por persona',
+    consult_wa: 'Consultar por WhatsApp →', consult: 'Consultar', all: 'Todos',
+    wa_tour_msg: 'Hola! Me interesa el tour', wa_exp_msg: 'Hola! Me interesa:',
+    wa_form_msg: 'Hola! Quiero cotizar un viaje por Argentina.'
+  },
+  en: {
+    nav_tours: 'Tours', nav_exp: 'Experiences', nav_agencies: 'Agencies',
+    nav_about: 'About Us', nav_contact: 'Contact Us',
+    hero_title: 'Tours & Experiences<br>to discover Argentina',
+    hero_sub: 'From Iguazú Falls to the End of the World. Packages with domestic flights, 4★ hotels and excursions designed by local experts.',
+    hero_cta: 'See tours & prices ↓', hero_wa: 'Chat on WhatsApp',
+    trust_1: 'Operating since 2013', trust_2: 'Argentina experts',
+    trust_3: '4-star hotels', trust_4: 'Domestic flights included',
+    trust_5: 'Personalized service',
+    tours_label: 'Our Tours', tours_title: 'Choose your Argentina adventure',
+    tours_sub: 'All-inclusive packages with updated prices. From classic getaways to the ultimate full-country trip.',
+    loading: 'Loading tours and updated prices...',
+    about_label: 'About us', about_title: 'Journeys that transform',
+    about_p1: 'Argentina Incoming is an independent DMC based in Buenos Aires, dedicated to travelers who want to experience our country authentically. Our focus: personalized attention and expert planning so your trip exceeds all expectations.',
+    about_p2: 'We carefully select our suppliers and stand out for the reputation we\'ve built with agencies and travelers from around the world.',
+    stat_1: 'Years of experience', stat_2: 'Argentine destinations', stat_3: 'Guaranteed response',
+    exp_label: 'Experiences', exp_title: 'Add experiences to your trip',
+    exp_sub: 'Optional activities to complement your tour or create a custom itinerary.',
+    ag_label: 'For Agencies & Tour Operators', ag_title: 'Your trusted DMC partner in Argentina',
+    ag_desc: 'We work with agencies and tour operators from Europe, USA and Latin America offering B2B services with net rates, competitive commissions and 24/7 operational support during tours.',
+    ag_f1: 'Custom group tours from 10 to 50+ passengers',
+    ag_f2: 'Confidential net rates and flexible commission structure',
+    ag_f3: 'Multilingual guides (Spanish, English, Portuguese, German, French)',
+    ag_f4: 'Quotes within 48 hours with detailed itinerary',
+    ag_f5: 'Own operations in all destinations: Buenos Aires, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia and Puerto Madryn',
+    ag_webinar_btn: '🎓 Book Training Webinar', ag_b2b_btn: 'Request B2B rates',
+    webinar_title: 'Webinar: Sell Argentina with confidence',
+    webinar_desc: 'Free 60-minute training session where we present our destinations, products and tools so you can offer Argentina to your clients with expert knowledge.',
+    wh_1: '60 minutes online', wh_2: 'Completely free', wh_3: '8 destinations covered', wh_4: 'Materials included',
+    webinar_cta: 'Book my spot →',
+    contact_label: 'Contact', contact_title: 'Ready for your Argentina trip?',
+    contact_desc: 'Write to us and our team will prepare a personalized proposal in less than 48 hours. No commitment.',
+    contact_phone: 'Phone',
+    form_title: 'Request a quote', form_name: 'Name', form_country: 'Country of origin',
+    form_pax: 'Number of travelers', form_msg: 'Tell us which destinations interest you and approximate dates...',
+    form_submit: 'Send inquiry →',
+    from: 'From', per_person: 'per person', total_pp: 'Total per person',
+    consult_wa: 'Inquire on WhatsApp →', consult: 'Inquire', all: 'All',
+    wa_tour_msg: 'Hi! I\'m interested in the tour', wa_exp_msg: 'Hi! I\'m interested in:',
+    wa_form_msg: 'Hi! I\'d like to get a quote for a trip to Argentina.'
+  }
+};
+
+function t(key) { return i18n[currentLang][key] || i18n['es'][key] || key; }
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+
+  // Translate all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key]) el.innerHTML = i18n[lang][key];
+  });
+
+  // Translate placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (i18n[lang][key]) el.placeholder = i18n[lang][key];
+  });
+
+  // Update form submit WhatsApp link
+  const submitBtn = document.getElementById('form-submit-btn');
+  if (submitBtn) {
+    submitBtn.onclick = () => window.open('https://wa.me/5491124650602?text='+encodeURIComponent(t('wa_form_msg')),'_blank');
+  }
+
+  // Re-render dynamic content if loaded
+  if (window._toursLoaded) renderTourCards(window._toursResults);
+  if (window._allExp) {
+    updateExpFilters();
+    renderExp(window._currentFilteredExp || window._allExp);
+  }
+}
+
+// =============================================
+// IMAGES & TOURS CONFIG
+// =============================================
+const DEST_IMAGES = {
+  'Buenos Aires':'img/dest-buenos-aires.jpg',
+  'Iguazú':'img/dest-iguazu.jpg',
+  'Salta':'img/dest-salta.jpg',
+  'Mendoza':'img/dest-mendoza.jpg',
+  'Bariloche':'img/dest-bariloche.jpg',
+  'El Calafate':'img/dest-calafate.jpg',
+  'Ushuaia':'img/dest-ushuaia.jpg',
+  'Puerto Madryn':'img/dest-madryn.jpg'
+};
+
+const BASE_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRg_FDPoDS1lb6KS65ph2MPz8bciF9BM3XZjtZrrmvJPW-ih0hT67k0TOBmVnOtjR4LRLtSy1D7tzHz/pub';
+
+const TOURS_CONFIG = [
+  { name:{es:'Clásicos Imperdibles',en:'Unmissable Classics'}, subtitle:{es:'Buenos Aires, Iguazú y El Calafate',en:'Buenos Aires, Iguazú & El Calafate'}, days:{es:'8 a 11 días',en:'8 to 11 days'}, gid:'2129728415', img:DEST_IMAGES['Iguazú'], badge:{es:'MÁS ELEGIDO',en:'MOST POPULAR'}, highlights:{es:['Vuelos internos','Hotel 4★','Cataratas','Glaciar Perito Moreno','Show de Tango'],en:['Domestic flights','4★ Hotel','Iguazú Falls','Perito Moreno Glacier','Tango Show']} },
+  { name:{es:'BA + Patagonia Austral',en:'BA + Southern Patagonia'}, subtitle:{es:'Buenos Aires, El Calafate y Ushuaia',en:'Buenos Aires, El Calafate & Ushuaia'}, days:{es:'8 a 11 días',en:'8 to 11 days'}, gid:'447951004', img:DEST_IMAGES['El Calafate'], badge:{es:'',en:''}, highlights:{es:['Vuelos internos','Hotel 4★','Glaciares','Tierra del Fuego','Canal de Beagle'],en:['Domestic flights','4★ Hotel','Glaciers','Tierra del Fuego','Beagle Channel']} },
+  { name:{es:'Argentina Esencial',en:'Essential Argentina'}, subtitle:{es:'Buenos Aires, Iguazú, El Calafate y Ushuaia',en:'Buenos Aires, Iguazú, El Calafate & Ushuaia'}, days:{es:'10 a 14 días',en:'10 to 14 days'}, gid:'1242544326', img:DEST_IMAGES['Ushuaia'], badge:{es:'RECOMENDADO',en:'RECOMMENDED'}, highlights:{es:['Vuelos internos','Hotel 4★','Cataratas','Glaciares','Fin del Mundo'],en:['Domestic flights','4★ Hotel','Iguazú Falls','Glaciers','End of the World']} },
+  { name:{es:'BA + Patagonia Full',en:'BA + Full Patagonia'}, subtitle:{es:'BA, Bariloche, Calafate, Ushuaia y Puerto Madryn',en:'BA, Bariloche, Calafate, Ushuaia & Puerto Madryn'}, days:{es:'14 a 16 días',en:'14 to 16 days'}, gid:'1713540334', img:DEST_IMAGES['Puerto Madryn'], badge:{es:'AVENTURA COMPLETA',en:'FULL ADVENTURE'}, highlights:{es:['Vuelos internos','Hotel 4★','7 Lagos','Glaciares','Ballenas','Pingüinos'],en:['Domestic flights','4★ Hotel','7 Lakes','Glaciers','Whales','Penguins']} },
+  { name:{es:'BA + Lagos y Glaciares',en:'BA + Lakes & Glaciers'}, subtitle:{es:'Buenos Aires, Bariloche, El Calafate y Ushuaia',en:'Buenos Aires, Bariloche, El Calafate & Ushuaia'}, days:{es:'11 a 13 días',en:'11 to 13 days'}, gid:'386817795', img:DEST_IMAGES['Bariloche'], badge:{es:'',en:''}, highlights:{es:['Vuelos internos','Hotel 4★','7 Lagos','Isla Victoria','Glaciares'],en:['Domestic flights','4★ Hotel','7 Lakes','Victoria Island','Glaciers']} },
+  { name:{es:'Argentina Maravillosa',en:'Wonderful Argentina'}, subtitle:{es:'Buenos Aires, Puerto Madryn, El Calafate e Iguazú',en:'Buenos Aires, Puerto Madryn, El Calafate & Iguazú'}, days:{es:'11 a 13 días',en:'11 to 13 days'}, gid:'1251018929', img:'img/tour-maravillosa.jpg', badge:{es:'WILDLIFE',en:'WILDLIFE'}, highlights:{es:['Vuelos internos','Hotel 4★','Ballenas','Pingüinos','Glaciares','Cataratas'],en:['Domestic flights','4★ Hotel','Whales','Penguins','Glaciers','Iguazú Falls']} },
+  { name:{es:'Argentina Full',en:'Full Argentina'}, subtitle:{es:'8 destinos: BA, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia y Madryn',en:'8 destinations: BA, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia & Madryn'}, days:{es:'21 a 27 días',en:'21 to 27 days'}, gid:'1399729745', img:DEST_IMAGES['Buenos Aires'], badge:{es:'EXPERIENCIA TOTAL',en:'ULTIMATE EXPERIENCE'}, highlights:{es:['8 destinos','Hotel 4★','Cataratas','Vinos','Glaciares','Ballenas'],en:['8 destinations','4★ Hotel','Iguazú Falls','Wines','Glaciers','Whales']} }
+];
+
+// =============================================
+// FETCH & PARSE
+// =============================================
+async function fetchSheet(gid) {
+  try { const r = await fetch(`${BASE_URL}?gid=${gid}&single=true&output=csv`); return Papa.parse(await r.text(),{header:false,skipEmptyLines:true}).data; } catch(e) { return null; }
+}
+
+function parseTourData(rows) {
+  if (!rows) return {total:0,sections:[]};
+  let sections=[],cur=null,total=0;
+  for (const row of rows) {
+    const c0=(row[0]||'').trim(), last=(row[row.length-1]||'').trim();
+    if (c0.includes('Vuelos')||c0.includes('Hoteles')||c0.includes('Traslados')||c0.includes('Actividades')) { cur={name:c0.replace(/ \(AMICHI\) - Regular/,'').replace(/ con Desayuno incluido/,''),items:[]}; sections.push(cur); continue; }
+    if (c0.includes('Total Por Pasajero')) { total=parseFloat(last.replace(/[^0-9.]/g,''))||0; continue; }
+    if (!c0||c0.includes('http')||c0.includes('aumento')) continue;
+    const price=parseFloat(last.replace(/[^0-9.]/g,''));
+    if (cur&&price>0) cur.items.push({name:c0,price});
+  }
+  return {total,sections:sections.filter(s=>s.items.length>0)};
+}
+
+// =============================================
+// RENDER TOURS
+// =============================================
+function renderTourCards(results) {
+  let html = '<div class="tours-grid">';
+  for (const tr of results) {
+    const p = tr.data.total;
+    const name = tr.config.name[currentLang];
+    const sub = tr.config.subtitle[currentLang];
+    const days = tr.config.days[currentLang];
+    const badge = tr.config.badge[currentLang];
+    const imgUrl = tr.config.img + (tr.config.img.includes('?') ? '' : '?w=800&q=75');
+    html += `
+      <div class="tour-card" data-idx="${tr.idx}">
+        <div class="tour-card-bg" style="background-image:url('${imgUrl}')"></div>
+        <div class="tour-card-overlay"></div>
+        <div class="tour-card-content">
+          ${badge ? `<div class="tour-card-badge">${badge}</div>` : ''}
+          <div class="tour-card-name">${name}</div>
+          <div class="tour-card-dest">${sub}</div>
+          <div class="tour-card-meta">
+            <div class="tour-card-days">📅 ${days}</div>
+            <div>
+              <div class="tour-card-from">${t('from')}</div>
+              <div class="tour-card-price">USD ${p>0?Math.round(p).toLocaleString('es-AR'):'—'}</div>
+              <div class="tour-card-pp">${t('per_person')}</div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+  html += '</div>';
+  document.getElementById('tours-container').innerHTML = html;
+  // Attach click handlers
+  document.querySelectorAll('.tour-card[data-idx]').forEach(card => {
+    card.addEventListener('click', () => openModal(window._toursResults[parseInt(card.dataset.idx)]));
+  });
+}
+
+async function loadTours() {
+  const results = [];
+  for (let i=0; i<TOURS_CONFIG.length; i++) {
+    const cfg = TOURS_CONFIG[i];
+    const rows = await fetchSheet(cfg.gid);
+    results.push({ idx:i, config:cfg, data:parseTourData(rows) });
+  }
+  window._toursResults = results;
+  window._toursLoaded = true;
+  renderTourCards(results);
+  loadExperiences(results);
+}
+
+// =============================================
+// MODAL
+// =============================================
+function openModal(tr) {
+  const m=document.getElementById('modal-content'), o=document.getElementById('modal-overlay');
+  const icons={'Vuelos':'✈️','Hoteles':'🏨','Traslados':'🚐','Actividades':'🎯'};
+  const name=tr.config.name[currentLang], sub=tr.config.subtitle[currentLang], days=tr.config.days[currentLang];
+  let html=`<div class="modal-header"><button class="modal-close" onclick="closeModal()">✕</button><h2>${name}</h2><p>${sub} · ${days}</p></div><div class="modal-body">`;
+  for (const s of tr.data.sections) {
+    const ic=Object.entries(icons).find(([k])=>s.name.includes(k));
+    html+=`<div class="modal-section-title">${ic?ic[1]+' ':''}${s.name}</div>`;
+    for (const i of s.items) html+=`<div class="modal-item"><span>${i.name}</span><span class="modal-item-price">USD ${Math.round(i.price).toLocaleString('es-AR')}</span></div>`;
+  }
+  html+=`<div class="modal-total"><span>${t('total_pp')}</span><strong>USD ${tr.data.total>0?Math.round(tr.data.total).toLocaleString('es-AR'):'—'}</strong></div>
+    <a href="https://wa.me/5491124650602?text=${encodeURIComponent(t('wa_tour_msg')+' '+name+'. ')}" target="_blank" class="modal-cta">${t('consult_wa')}</a></div>`;
+  m.innerHTML=html; o.classList.add('active'); document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('active');document.body.style.overflow='';}
+document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+
+// =============================================
+// EXPERIENCES
+// =============================================
+function loadExperiences(toursData) {
+  const expMap=new Map();
+  const destImgs={}; for(const[k,v]of Object.entries(DEST_IMAGES)) destImgs[k]=v;
+  for (const tr of toursData) {
+    for (const s of tr.data.sections) {
+      if (!s.name.includes('Actividades')) continue;
+      for (const item of s.items) {
+        if (!expMap.has(item.name)) {
+          let dest='Argentina';
+          if(item.name.match(/Buenos Aires|Delta|Tango/i))dest='Buenos Aires';
+          else if(item.name.match(/Cataratas|Gran Aventura|Jungle/i))dest='Iguazú';
+          else if(item.name.match(/Quebrada|Cafayate|Tren a las/i))dest='Salta';
+          else if(item.name.match(/Bodega|Valle de Uco|Cabalgata/i))dest='Mendoza';
+          else if(item.name.match(/7 Lagos|Isla Victoria|Arrayanes|Circuito/i))dest='Bariloche';
+          else if(item.name.match(/Glaciar|Perito|Safari|Chaltén|Torres del Paine|Nibepo|City Tour Calafate/i))dest='El Calafate';
+          else if(item.name.match(/Tierra del Fuego|Canal de Beagle|Tren fin|City Tour Ushuaia/i))dest='Ushuaia';
+          else if(item.name.match(/Península|Punta Tombo|Ballenas|Snorkeling/i))dest='Puerto Madryn';
+          expMap.set(item.name,{...item,dest});
+        }
+      }
+    }
+  }
+  window._allExp=[...expMap.values()];
+  window._destImgs=destImgs;
+  window._currentFilteredExp=window._allExp;
+  updateExpFilters();
+  renderExp(window._allExp);
+}
+
+function updateExpFilters() {
+  const dests=[...new Set(window._allExp.map(e=>e.dest))];
+  document.getElementById('dest-filter').innerHTML=[t('all'),...dests].map((d,i)=>
+    `<button class="${i===0?'active':''}" onclick="filterExp('${d}',this)">${d}</button>`
+  ).join('');
+}
+
+function renderExp(exps) {
+  const imgs=window._destImgs;
+  document.getElementById('exp-grid').innerHTML=exps.map(e=>`
+    <div class="exp-card">
+      <div class="exp-card-img" style="background-image:url('${imgs[e.dest]||imgs['Buenos Aires']}')">
+        <div class="exp-card-dest">${e.dest}</div>
+      </div>
+      <div class="exp-card-body">
+        <div class="exp-card-name">${e.name}</div>
+        <div class="exp-card-footer">
+          <div class="exp-card-price">USD ${Math.round(e.price).toLocaleString('es-AR')}<small>${t('per_person')}</small></div>
+          <a href="https://wa.me/5491124650602?text=${encodeURIComponent(t('wa_exp_msg')+' '+e.name)}" target="_blank" class="exp-card-btn">${t('consult')}</a>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function filterExp(dest,btn) {
+  document.querySelectorAll('.dest-filter button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = dest===t('all') ? window._allExp : window._allExp.filter(e=>e.dest===dest);
+  window._currentFilteredExp = filtered;
+  renderExp(filtered);
+}
+
+// Hero slider
+let slideIdx=0; const slides=document.querySelectorAll('.hero-slide');
+setInterval(()=>{slides[slideIdx].classList.remove('active');slideIdx=(slideIdx+1)%slides.length;slides[slideIdx].classList.add('active');},5000);
+
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50));
+
+// Smooth scroll
+do
