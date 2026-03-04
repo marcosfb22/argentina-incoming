@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -27,7 +27,7 @@ body { font-family:'Archivo',sans-serif; color:var(--text); background:var(--whi
 /* NAV */
 .nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:0.8rem 2rem; display:flex; justify-content:space-between; align-items:center; transition:all 0.4s; }
 .nav.scrolled { background:var(--dark); box-shadow:0 4px 30px rgba(0,0,0,0.15); }
-.nav-logo { height:50px; filter:brightness(10); transition:all 0.3s; }
+.nav-logo { height:50px; transition:all 0.3s; }
 .nav.scrolled .nav-logo { height:40px; }
 .nav-right { display:flex; align-items:center; gap:1.5rem; }
 .nav-links { display:flex; gap:1.8rem; list-style:none; align-items:center; }
@@ -224,10 +224,10 @@ footer { background:#191b1e; color:rgba(255,255,255,0.4); text-align:center; pad
 <!-- HERO -->
 <section class="hero">
   <div class="hero-slider">
-    <div class="hero-slide active" style="background-image:url('img/hero-buenos-aires.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('img/hero-iguazu.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('img/hero-calafate.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('img/hero-madryn.jpg')"></div>
+    <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=1400&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1540174401473-df5f1c06c716?w=1400&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1589556763575-c3570dcb3cf4?w=1400&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1596401057633-54a8fe8ef3db?w=1400&q=80')"></div>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -266,7 +266,7 @@ footer { background:#191b1e; color:rgba(255,255,255,0.4); text-align:center; pad
 <div class="about-strip" id="nosotros">
   <div class="about-inner">
     <div class="about-img">
-      <img src="img/about.jpg" alt="Puerto Madryn whale">
+      <img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=800&q=75" alt="Puerto Madryn whale">
     </div>
     <div class="about-text">
       <div class="section-label" data-i18n="about_label">Sobre nosotros</div>
@@ -513,14 +513,14 @@ function setLang(lang) {
 // IMAGES & TOURS CONFIG
 // =============================================
 const DEST_IMAGES = {
-  'Buenos Aires':'img/dest-buenos-aires.jpg',
-  'Iguazú':'img/dest-iguazu.jpg',
-  'Salta':'img/dest-salta.jpg',
-  'Mendoza':'img/dest-mendoza.jpg',
-  'Bariloche':'img/dest-bariloche.jpg',
-  'El Calafate':'img/dest-calafate.jpg',
-  'Ushuaia':'img/dest-ushuaia.jpg',
-  'Puerto Madryn':'img/dest-madryn.jpg'
+  'Buenos Aires':'https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=600&q=75',
+  'Iguazú':'https://images.unsplash.com/photo-1540174401473-df5f1c06c716?w=600&q=75',
+  'Salta':'https://images.unsplash.com/photo-1599502767667-78de247ecaf8?w=600&q=75',
+  'Mendoza':'https://images.unsplash.com/photo-1600197003540-94e3e8e1168a?w=600&q=75',
+  'Bariloche':'https://images.unsplash.com/photo-1558029137-023a55481b21?w=600&q=75',
+  'El Calafate':'https://images.unsplash.com/photo-1589556763575-c3570dcb3cf4?w=600&q=75',
+  'Ushuaia':'https://images.unsplash.com/photo-1551354036-ebc4299be345?w=600&q=75',
+  'Puerto Madryn':'https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=600&q=75'
 };
 
 const BASE_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRg_FDPoDS1lb6KS65ph2MPz8bciF9BM3XZjtZrrmvJPW-ih0hT67k0TOBmVnOtjR4LRLtSy1D7tzHz/pub';
@@ -531,7 +531,7 @@ const TOURS_CONFIG = [
   { name:{es:'Argentina Esencial',en:'Essential Argentina'}, subtitle:{es:'Buenos Aires, Iguazú, El Calafate y Ushuaia',en:'Buenos Aires, Iguazú, El Calafate & Ushuaia'}, days:{es:'10 a 14 días',en:'10 to 14 days'}, gid:'1242544326', img:DEST_IMAGES['Ushuaia'], badge:{es:'RECOMENDADO',en:'RECOMMENDED'}, highlights:{es:['Vuelos internos','Hotel 4★','Cataratas','Glaciares','Fin del Mundo'],en:['Domestic flights','4★ Hotel','Iguazú Falls','Glaciers','End of the World']} },
   { name:{es:'BA + Patagonia Full',en:'BA + Full Patagonia'}, subtitle:{es:'BA, Bariloche, Calafate, Ushuaia y Puerto Madryn',en:'BA, Bariloche, Calafate, Ushuaia & Puerto Madryn'}, days:{es:'14 a 16 días',en:'14 to 16 days'}, gid:'1713540334', img:DEST_IMAGES['Puerto Madryn'], badge:{es:'AVENTURA COMPLETA',en:'FULL ADVENTURE'}, highlights:{es:['Vuelos internos','Hotel 4★','7 Lagos','Glaciares','Ballenas','Pingüinos'],en:['Domestic flights','4★ Hotel','7 Lakes','Glaciers','Whales','Penguins']} },
   { name:{es:'BA + Lagos y Glaciares',en:'BA + Lakes & Glaciers'}, subtitle:{es:'Buenos Aires, Bariloche, El Calafate y Ushuaia',en:'Buenos Aires, Bariloche, El Calafate & Ushuaia'}, days:{es:'11 a 13 días',en:'11 to 13 days'}, gid:'386817795', img:DEST_IMAGES['Bariloche'], badge:{es:'',en:''}, highlights:{es:['Vuelos internos','Hotel 4★','7 Lagos','Isla Victoria','Glaciares'],en:['Domestic flights','4★ Hotel','7 Lakes','Victoria Island','Glaciers']} },
-  { name:{es:'Argentina Maravillosa',en:'Wonderful Argentina'}, subtitle:{es:'Buenos Aires, Puerto Madryn, El Calafate e Iguazú',en:'Buenos Aires, Puerto Madryn, El Calafate & Iguazú'}, days:{es:'11 a 13 días',en:'11 to 13 days'}, gid:'1251018929', img:'img/tour-maravillosa.jpg', badge:{es:'WILDLIFE',en:'WILDLIFE'}, highlights:{es:['Vuelos internos','Hotel 4★','Ballenas','Pingüinos','Glaciares','Cataratas'],en:['Domestic flights','4★ Hotel','Whales','Penguins','Glaciers','Iguazú Falls']} },
+  { name:{es:'Argentina Maravillosa',en:'Wonderful Argentina'}, subtitle:{es:'Buenos Aires, Puerto Madryn, El Calafate e Iguazú',en:'Buenos Aires, Puerto Madryn, El Calafate & Iguazú'}, days:{es:'11 a 13 días',en:'11 to 13 days'}, gid:'1251018929', img:'https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=800&q=75', badge:{es:'WILDLIFE',en:'WILDLIFE'}, highlights:{es:['Vuelos internos','Hotel 4★','Ballenas','Pingüinos','Glaciares','Cataratas'],en:['Domestic flights','4★ Hotel','Whales','Penguins','Glaciers','Iguazú Falls']} },
   { name:{es:'Argentina Full',en:'Full Argentina'}, subtitle:{es:'8 destinos: BA, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia y Madryn',en:'8 destinations: BA, Iguazú, Salta, Mendoza, Bariloche, Calafate, Ushuaia & Madryn'}, days:{es:'21 a 27 días',en:'21 to 27 days'}, gid:'1399729745', img:DEST_IMAGES['Buenos Aires'], badge:{es:'EXPERIENCIA TOTAL',en:'ULTIMATE EXPERIENCE'}, highlights:{es:['8 destinos','Hotel 4★','Cataratas','Vinos','Glaciares','Ballenas'],en:['8 destinations','4★ Hotel','Iguazú Falls','Wines','Glaciers','Whales']} }
 ];
 
@@ -573,6 +573,7 @@ async function loadTours() {
   window._toursResults = initialResults;
   window._toursLoaded = true;
   renderTourCards(initialResults);
+  loadExperiences(initialResults);
 
   // 2) Fetch real prices in parallel (not sequential!)
   const promises = TOURS_CONFIG.map((cfg, i) => 
@@ -623,18 +624,6 @@ function renderTourCards(results) {
   });
 }
 
-async function loadTours() {
-  const results = [];
-  for (let i=0; i<TOURS_CONFIG.length; i++) {
-    const cfg = TOURS_CONFIG[i];
-    const rows = await fetchSheet(cfg.gid);
-    results.push({ idx:i, config:cfg, data:parseTourData(rows) });
-  }
-  window._toursResults = results;
-  window._toursLoaded = true;
-  renderTourCards(results);
-  loadExperiences(results);
-}
 
 // =============================================
 // MODAL
@@ -659,6 +648,27 @@ document.getElementById('modal-overlay').addEventListener('click',e=>{if(e.targe
 // =============================================
 // EXPERIENCES
 // =============================================
+const FALLBACK_EXPERIENCES = [
+  {name:'Show de Tango + Cena',price:85,dest:'Buenos Aires'},
+  {name:'City Tour Buenos Aires',price:35,dest:'Buenos Aires'},
+  {name:'Delta del Tigre',price:55,dest:'Buenos Aires'},
+  {name:'Cataratas lado argentino + Gran Aventura',price:65,dest:'Iguazú'},
+  {name:'Cataratas lado brasileño',price:45,dest:'Iguazú'},
+  {name:'Glaciar Perito Moreno',price:75,dest:'El Calafate'},
+  {name:'Safari Náutico Glaciares',price:90,dest:'El Calafate'},
+  {name:'Parque Nacional Tierra del Fuego',price:60,dest:'Ushuaia'},
+  {name:'Canal de Beagle',price:70,dest:'Ushuaia'},
+  {name:'Tren del Fin del Mundo',price:55,dest:'Ushuaia'},
+  {name:'Circuito 7 Lagos',price:50,dest:'Bariloche'},
+  {name:'Isla Victoria y Arrayanes',price:65,dest:'Bariloche'},
+  {name:'Península Valdés',price:80,dest:'Puerto Madryn'},
+  {name:'Avistaje de Ballenas',price:60,dest:'Puerto Madryn'},
+  {name:'Punta Tombo (Pingüinos)',price:55,dest:'Puerto Madryn'},
+  {name:'Quebrada de Humahuaca',price:45,dest:'Salta'},
+  {name:'Bodega con Degustación',price:40,dest:'Mendoza'},
+  {name:'Alta Montaña (Aconcagua)',price:55,dest:'Mendoza'},
+];
+
 function loadExperiences(toursData) {
   const expMap=new Map();
   const destImgs={}; for(const[k,v]of Object.entries(DEST_IMAGES)) destImgs[k]=v;
@@ -680,6 +690,10 @@ function loadExperiences(toursData) {
         }
       }
     }
+  }
+  // Use fallback if no experiences loaded from sheets
+  if(expMap.size===0) { 
+    for(const e of FALLBACK_EXPERIENCES) expMap.set(e.name,e);
   }
   window._allExp=[...expMap.values()];
   window._destImgs=destImgs;
